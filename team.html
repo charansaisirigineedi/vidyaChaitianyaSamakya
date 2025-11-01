@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Vidya Chaitanya Samakya</title>
+    <meta name="description" content="Meet the dedicated members of Vidya Chaitanya Samakya who lead our mission to empower students through education.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
+    <link rel="alternate icon" href="assets/images/vcs-logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-white">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-2 md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-[calc(100%-1rem)] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar">
+        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
+                    <span class="text-xl md:text-2xl font-serif font-bold text-blue-800 hidden sm:block nav-brand-text">Vidya Chaitanya Samakya</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">Home</a>
+                    <a href="initiatives.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">Initiatives</a>
+                    <a href="about.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">About Us</a>
+                    <a href="team.html" class="nav-link text-blue-800 font-medium border-b-2 border-blue-800 transition-colors">Our Team</a>
+                </div>
+                <button class="md:hidden p-2 text-gray-900 hover:text-blue-800 transition-colors relative z-50" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                    <svg class="w-7 h-7 menu-close-icon" id="menuIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg class="w-7 h-7 menu-close-icon hidden" id="closeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="flex flex-col h-full">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-10 w-10">
+                    <span class="text-lg font-serif font-bold text-blue-800">VCS</span>
+                </div>
+                <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Menu Items -->
+            <nav class="flex-1 px-6 py-8">
+                <div class="space-y-2">
+                    <a href="index.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                        Home
+                    </a>
+                    <a href="initiatives.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                        Initiatives
+                    </a>
+                    <a href="about.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                        About Us
+                    </a>
+                    <a href="team.html" class="mobile-menu-link active block px-4 py-4 text-lg font-semibold text-blue-800 rounded-xl bg-blue-50/50 hover:bg-blue-50 transition-all">
+                        Our Team
+                    </a>
+                </div>
+            </nav>
+            
+            <!-- Footer Info -->
+            <div class="p-6 border-t border-gray-200 bg-gray-50/50">
+                <p class="text-xs text-gray-500 text-center">
+                    Vidya Chaitanya Samakya
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-b from-blue-800 via-blue-700 to-blue-600 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 drop-shadow-lg" data-aos="fade-up">
+                Our Team
+            </h1>
+            <p class="text-xl text-gray-100 max-w-2xl mx-auto mb-6" data-aos="fade-up" data-aos-delay="100">
+                The dedicated individuals who lead our mission
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 mt-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white/20 backdrop-blur-sm rounded-full px-6 py-2 text-white text-sm font-semibold">
+                    <span class="text-amber-300">14</span> Dedicated Members
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-full px-6 py-2 text-white text-sm font-semibold">
+                    <span class="text-amber-300">13+</span> Years of Service
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section class="py-16 bg-gradient-to-b from-white via-gray-50 to-white relative">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle at 2px 2px, #1E40AF 1px, transparent 0); background-size: 40px 40px;"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto space-y-12">
+                <!-- Leadership Section Header -->
+                <div class="text-center mb-8" data-aos="fade-up">
+                    <div class="inline-block px-6 py-2 bg-gradient-to-r from-blue-800 to-blue-600 rounded-full text-white text-sm font-semibold mb-4">
+                        Leadership
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Executive Leadership</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto mt-3"></div>
+                </div>
+                <!-- Row 1: President and Vice President -->
+                <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <!-- Member Card 1 - President -->
+                    <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50/50 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-blue-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-800/5 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-4 ring-blue-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">M. Srinu Babu</h3>
+                            <div class="inline-block px-4 py-1.5 bg-blue-800 text-white rounded-full text-sm font-semibold">President</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 2 - Vice President -->
+                    <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50/50 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-blue-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-800/5 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-4 ring-blue-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">K. Durga Prasad</h3>
+                            <div class="inline-block px-4 py-1.5 bg-blue-800 text-white rounded-full text-sm font-semibold">Vice President</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Administrative Section Header -->
+                <div class="text-center mt-12 mb-8" data-aos="fade-up">
+                    <div class="inline-block px-6 py-2 bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-full text-white text-sm font-semibold mb-4">
+                        Administration
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Administrative Team</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-800 mx-auto mt-3"></div>
+                </div>
+
+                <!-- Row 2: Secretary, Joint Secretary, Treasurer -->
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Member Card 3 - Secretary -->
+                    <div class="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-emerald-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-emerald-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">Polisetti Sri Sri</h3>
+                            <div class="inline-block px-3 py-1 bg-emerald-600 text-white rounded-full text-xs font-semibold">Secretary</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 4 - Joint Secretary -->
+                    <div class="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-emerald-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-emerald-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">P.N.S. Srinivas Kumar</h3>
+                            <div class="inline-block px-3 py-1 bg-emerald-600 text-white rounded-full text-xs font-semibold">Joint Secretary</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 5 - Treasurer -->
+                    <div class="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-emerald-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="500">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-emerald-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">J.R.V. Nageswara Rao</h3>
+                            <div class="inline-block px-3 py-1 bg-emerald-600 text-white rounded-full text-xs font-semibold">Treasurer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M.C. Members Section Header -->
+                <div class="text-center mt-12 mb-8" data-aos="fade-up">
+                    <div class="inline-block px-6 py-2 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full text-white text-sm font-semibold mb-4">
+                        Management Committee
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">M.C. Members</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-600 mx-auto mt-3"></div>
+                </div>
+
+                <!-- Row 3+: M.C. Members -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Member Card 6 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">T. Gandhi</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 7 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">L. Venkateswara Rao</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 8 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">V. Sandeep Kumar</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 9 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">K.M.M. Krishna</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 10 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="500">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">G.V.V. Siva Kumar</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 11 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="600">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">M. Uma Maheswara Rao</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 12 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">K.C.S. Phani Kumar</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 13 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">SK. Hasan Alisha</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card 14 - M.C. Member -->
+                    <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50/30 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 border-2 border-purple-300 relative overflow-hidden group text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl group-hover:scale-110 transition-transform ring-3 ring-purple-100">
+                                <span class="text-4xl text-white">👤</span>
+                            </div>
+                            <h3 class="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2 text-center">D. Venkata Vara Prasad</h3>
+                            <div class="inline-block px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">M.C. Member</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 logo-footer">
+                        <h3 class="text-xl font-serif font-bold text-amber-500">Vidya Chaitanya Samakya</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Empowering students through education, mentorship, and compassion for over a decade.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="index.html" class="hover:text-amber-500 transition-colors">Home</a></li>
+                        <li><a href="initiatives.html" class="hover:text-amber-500 transition-colors">Initiatives</a></li>
+                        <li><a href="about.html" class="hover:text-amber-500 transition-colors">About Us</a></li>
+                        <li><a href="team.html" class="hover:text-amber-500 transition-colors">Our Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>📞 9849006368, 9441073902</li>
+                        <li>✉️ vidyachaitanyasmakya@gmail.com</li>
+                        <li>📍 Palakol, Andhra Pradesh</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; <span id="currentYear">2024</span> Vidya Chaitanya Samakya (Regd No: 87/2011). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Set current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+        
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking menu links
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(closeMobileMenu, 200);
+            });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+                backToTop.classList.add('flex');
+            } else {
+                backToTop.classList.add('hidden');
+                backToTop.classList.remove('flex');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
