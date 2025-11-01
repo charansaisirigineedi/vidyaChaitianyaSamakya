@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Vidya Chaitanya Samakya</title>
+    <meta name="description" content="Learn about Vidya Chaitanya Samakya, our mission, journey, and the dedicated individuals behind our organization.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="vcs-logo.svg">
+    <link rel="alternate icon" href="vcs-logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.025em;
+        }
+        
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, #1E40AF, #F59E0B);
+            z-index: 9999;
+            transition: width 0.2s ease;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #1E40AF, #F59E0B);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            background: #F59E0B;
+            border: 3px solid #1E40AF;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        
+        .logo-navbar {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        .logo-footer {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+            backdrop-filter: blur(20px);
+            z-index: 50;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-close {
+            transition: transform 0.2s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .mobile-menu-link {
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .mobile-menu-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, #1E40AF, #F59E0B);
+            border-radius: 0 2px 2px 0;
+            transition: height 0.2s ease;
+        }
+        
+        .mobile-menu-link:hover::before,
+        .mobile-menu-link.active::before {
+            height: 60%;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-2 md:top-4 left-1/2 transform -translate-x-1/2 w-[98%] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar">
+        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <img src="vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
+                    <span class="text-xl md:text-2xl font-serif font-bold text-blue-800 hidden sm:block">Vidya Chaitanya Samakya</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-blue-800 font-medium transition-colors">Home</a>
+                    <a href="initiatives.html" class="text-gray-900 hover:text-blue-800 font-medium transition-colors">Initiatives</a>
+                    <a href="about.html" class="text-blue-800 font-medium border-b-2 border-blue-800">About Us</a>
+                </div>
+                <button class="md:hidden p-2 text-gray-900 hover:text-blue-800 transition-colors relative z-50" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                    <svg class="w-7 h-7 menu-close-icon" id="menuIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg class="w-7 h-7 menu-close-icon hidden" id="closeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="flex flex-col h-full">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <img src="vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-10 w-10">
+                    <span class="text-lg font-serif font-bold text-blue-800">VCS</span>
+                </div>
+                <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Menu Items -->
+            <nav class="flex-1 px-6 py-8">
+                <div class="space-y-2">
+                    <a href="index.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                        Home
+                    </a>
+                    <a href="initiatives.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                        Initiatives
+                    </a>
+                    <a href="about.html" class="mobile-menu-link active block px-4 py-4 text-lg font-semibold text-blue-800 rounded-xl bg-blue-50/50 hover:bg-blue-50 transition-all">
+                        About Us
+                    </a>
+                </div>
+            </nav>
+            
+            <!-- Footer Info -->
+            <div class="p-6 border-t border-gray-200 bg-gray-50/50">
+                <p class="text-xs text-gray-500 text-center">
+                    Vidya Chaitanya Samakya
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 bg-white overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, #1E40AF 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+        
+        <!-- Gradient Overlays -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-800/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-5xl mx-auto text-center">
+                <!-- Logo - Centered and Prominent -->
+                <div class="mb-8" data-aos="fade-down" data-aos-duration="800">
+                    <div class="inline-block bg-gradient-to-br from-blue-800/10 to-amber-500/10 rounded-3xl p-8 border-2 border-blue-800/20 shadow-xl">
+                        <img src="vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="w-48 h-48 md:w-64 md:h-64 mx-auto drop-shadow-2xl">
+                    </div>
+                </div>
+                
+                <!-- Badge -->
+                <div class="mb-6" data-aos="fade-up" data-aos-delay="100">
+                    <span class="inline-block px-6 py-2 bg-gradient-to-r from-blue-800 to-blue-600 text-white rounded-full text-sm font-semibold shadow-md">
+                        Registered Non-Profit • Regd No: 87/2011
+                    </span>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
+                    The People Behind<br class="hidden md:block"> the Vision
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8" data-aos="fade-up" data-aos-delay="300">
+                    Born from a simple yet powerful belief: <span class="text-blue-800 font-semibold">education is not confined to school walls</span>
+                </p>
+                
+                <!-- Description Text -->
+                <div class="max-w-3xl mx-auto space-y-4" data-aos="fade-up" data-aos-delay="400">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Established in 2011, Vidya Chaitanya Samakya began as a small initiative in <span class="font-semibold text-gray-900">Palakol, Andhra Pradesh</span>, driven by educators and community leaders who saw untapped potential in young minds.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        What started as a vision to bridge educational gaps has grown into a trusted organization, touching the lives of thousands of students across the region and creating pathways to success that extend far beyond traditional learning.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why We Do This Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                        Why We Do This
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6" data-aos="fade-right">
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-blue-800/10 rounded-xl flex items-center justify-center">
+                                <span class="text-2xl">🎓</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-serif font-bold text-gray-900 mb-2">The Challenge</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    In Palakol, like many regions across India, countless bright young minds face barriers that limit their potential. Many students possess exceptional talent but lack access to specialized coaching, competitive platforms, or financial resources needed to pursue their dreams.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center">
+                                <span class="text-2xl">💡</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-serif font-bold text-gray-900 mb-2">The Realization</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Our founders—educators and community leaders who had witnessed these challenges firsthand—realized that traditional schooling alone wasn't enough. They saw students who could excel but needed extra support, mentorship, and opportunities beyond the standard curriculum.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative" data-aos="fade-left">
+                        <div class="bg-gradient-to-br from-blue-800/10 via-amber-500/10 to-blue-800/10 rounded-3xl p-10 border border-blue-800/20">
+                            <div class="text-center">
+                                <div class="text-6xl mb-6">🌟</div>
+                                <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Our Vision</h3>
+                                <p class="text-lg text-gray-700 leading-relaxed">
+                                    This vision sparked Vidya Chaitanya Samakya in 2011. We believe that every child deserves a chance to discover their potential, regardless of their financial circumstances. Our programs bridge gaps, identify hidden talents, and provide the support system that transforms aspirations into achievements.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizing Body Members Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                    Our Team
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    The dedicated individuals who lead our mission
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto mt-4"></div>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Member Card 1 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-32 h-32 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-5xl text-white">👤</span>
+                            <!-- Replace with actual photo: <img src="member1.jpg" alt="Member Name" class="w-32 h-32 rounded-full object-cover"> -->
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Member Name</h3>
+                        <p class="text-blue-800 font-semibold mb-4">Position/Role</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief description about the member's contribution, expertise, or role in the organization.
+                        </p>
+                        <!-- Optional: Contact info or social links -->
+                        <!-- <div class="mt-4 pt-4 border-t border-gray-200">
+                            <p class="text-xs text-gray-500">Contact details if needed</p>
+                        </div> -->
+                    </div>
+
+                    <!-- Member Card 2 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-32 h-32 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-5xl text-white">👤</span>
+                            <!-- Replace with actual photo: <img src="member2.jpg" alt="Member Name" class="w-32 h-32 rounded-full object-cover"> -->
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Member Name</h3>
+                        <p class="text-amber-700 font-semibold mb-4">Position/Role</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief description about the member's contribution, expertise, or role in the organization.
+                        </p>
+                    </div>
+
+                    <!-- Member Card 3 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-32 h-32 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-5xl text-white">👤</span>
+                            <!-- Replace with actual photo: <img src="member3.jpg" alt="Member Name" class="w-32 h-32 rounded-full object-cover"> -->
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Member Name</h3>
+                        <p class="text-emerald-700 font-semibold mb-4">Position/Role</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief description about the member's contribution, expertise, or role in the organization.
+                        </p>
+                    </div>
+
+                    <!-- Member Card 4 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-32 h-32 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-5xl text-white">👤</span>
+                            <!-- Replace with actual photo: <img src="member4.jpg" alt="Member Name" class="w-32 h-32 rounded-full object-cover"> -->
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Member Name</h3>
+                        <p class="text-purple-700 font-semibold mb-4">Position/Role</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief description about the member's contribution, expertise, or role in the organization.
+                        </p>
+                    </div>
+
+                    <!-- Member Card 5 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="500">
+                        <div class="w-32 h-32 bg-gradient-to-br from-blue-800 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-5xl text-white">👤</span>
+                            <!-- Replace with actual photo: <img src="member5.jpg" alt="Member Name" class="w-32 h-32 rounded-full object-cover"> -->
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Member Name</h3>
+                        <p class="text-blue-800 font-semibold mb-4">Position/Role</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief description about the member's contribution, expertise, or role in the organization.
+                        </p>
+                    </div>
+
+                    <!-- Member Card 6 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 text-center" data-aos="fade-up" data-aos-delay="600">
+                        <div class="w-32 h-32 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-5xl text-white">👤</span>
+                            <!-- Replace with actual photo: <img src="member6.jpg" alt="Member Name" class="w-32 h-32 rounded-full object-cover"> -->
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-2">Member Name</h3>
+                        <p class="text-amber-700 font-semibold mb-4">Position/Role</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Brief description about the member's contribution, expertise, or role in the organization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                    Our Core Philosophy
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    The principles that guide everything we do
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto mt-4"></div>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 bg-blue-800/10 rounded-2xl flex items-center justify-center mb-6">
+                            <span class="text-4xl">🎯</span>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Mission</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            To empower students through innovative educational programs that go beyond traditional classroom learning.
+                        </p>
+                        <div class="pt-4 border-t border-gray-200">
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                We achieve this by identifying talent through competitive exams, providing specialized coaching, organizing enriching summer camps, and offering financial support to deserving students pursuing higher aspirations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6">
+                            <span class="text-4xl">💡</span>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Vision</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            To create a society where every child has access to quality education and opportunities to excel.
+                        </p>
+                        <div class="pt-4 border-t border-gray-200">
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                We envision a future where financial constraints never limit a student's potential, where academic excellence is nurtured alongside character development, and where every learner can discover and pursue their true calling.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6">
+                            <span class="text-4xl">❤️</span>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Values</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Integrity, empathy, and dedication to nurturing young minds with compassion and excellence.
+                        </p>
+                        <div class="pt-4 border-t border-gray-200">
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Integrity guides our actions—ensuring transparency in programs and honest communication. Empathy drives us to understand each student's unique challenges. Our dedication manifests in personalized mentorship and unwavering commitment to holistic development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                    Our Journey
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Milestones that shaped our story
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto mt-4"></div>
+            </div>
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Timeline Item 1 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-amber-500" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-amber-500 font-bold text-xl">2011</div>
+                            <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center">
+                                <span class="text-xl">🚀</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Foundation</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Vidya Chaitanya Samakya was founded and registered (Regd No: 87/2011) with a vision to empower students beyond traditional classroom education.
+                        </p>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-blue-800" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-blue-800 font-bold text-xl">2011 - Present</div>
+                            <div class="w-12 h-12 bg-blue-800/10 rounded-full flex items-center justify-center">
+                                <span class="text-xl">📝</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Divisional Talent Test</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Conducting annual divisional-level talent tests, engaging nearly a thousand children every year for the past 13 years.
+                        </p>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-emerald-500" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-emerald-600 font-bold text-xl">Over a Decade</div>
+                            <div class="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center">
+                                <span class="text-xl">🎓</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Free NMMS Coaching</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Offering free NMMS coaching classes for Class 8 students, successfully guiding multiple batches toward scholarship success.
+                        </p>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-purple-500" data-aos="fade-up" data-aos-delay="400">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-purple-600 font-bold text-xl">Ongoing</div>
+                            <div class="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center">
+                                <span class="text-xl">🌟</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Expanding Initiatives</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Continuously expanding our programs including summer camps, financial assistance, and community felicitations to serve more students and families.
+                        </p>
+                    </div>
+
+                    <!-- Timeline Item 5 - Latest Initiative -->
+                    <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-amber-500 relative" data-aos="fade-up" data-aos-delay="500">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-amber-500 text-white rounded-full text-xs font-bold">NEW</span>
+                        </div>
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-amber-600 font-bold text-xl">2025 - Present</div>
+                            <div class="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center">
+                                <span class="text-xl">🔬</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">ACT Science Center</h3>
+                        <p class="text-gray-600 leading-relaxed mb-2">
+                            A joint initiative by Vidya Chaitanya Samakya, Allamraju Charitable Trust (ACT), and Kriya Society, establishing a science center in Palakol to complement formal education with practical, hands-on scientific learning.
+                        </p>
+                        <p class="text-sm text-gray-500 italic">
+                            Palakol, West Godavari District, Andhra Pradesh
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 logo-footer">
+                        <h3 class="text-xl font-serif font-bold text-amber-500">Vidya Chaitanya Samakya</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Empowering students through education, mentorship, and compassion for over a decade.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="index.html" class="hover:text-amber-500 transition-colors">Home</a></li>
+                        <li><a href="initiatives.html" class="hover:text-amber-500 transition-colors">Initiatives</a></li>
+                        <li><a href="about.html" class="hover:text-amber-500 transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>📞 9849006368, 9441073902</li>
+                        <li>✉️ vidyachaitanyasmakya@gmail.com</li>
+                        <li>📍 Palakol, Andhra Pradesh</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; <span id="currentYear">2024</span> Vidya Chaitanya Samakya (Regd No: 87/2011). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Set current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile menu toggle
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+        
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking menu links
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(closeMobileMenu, 200);
+            });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+                backToTop.classList.add('flex');
+            } else {
+                backToTop.classList.add('hidden');
+                backToTop.classList.remove('flex');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
