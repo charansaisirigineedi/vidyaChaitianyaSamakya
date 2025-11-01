@@ -30,12 +30,13 @@
     <div class="scroll-progress" id="scrollProgress"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-2 md:top-4 left-1/2 transform -translate-x-1/2 w-[98%] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar">
+    <nav class="fixed top-2 md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-[calc(100%-1rem)] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar">
         <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center space-x-3 group">
-                    <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
-                    <span class="text-xl md:text-2xl font-serif font-bold text-blue-800 hidden sm:block">Vidya Chaitanya Samakya</span>
+                <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group">
+                    <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
+                    <span class="text-base sm:text-xl font-serif font-bold text-blue-800 nav-brand-text md:hidden">VCS</span>
+                    <span class="text-xl md:text-2xl font-serif font-bold text-blue-800 hidden md:block nav-brand-text">Vidya Chaitanya Samakya</span>
                 </a>
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="text-gray-900 hover:text-blue-800 font-medium transition-colors">Home</a>
@@ -63,9 +64,12 @@
         <div class="flex flex-col h-full">
             <!-- Header -->
             <div class="flex items-center justify-between p-6 border-b border-gray-200">
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-2">
                     <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-10 w-10">
-                    <span class="text-lg font-serif font-bold text-blue-800">VCS</span>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-serif font-bold text-blue-800 leading-tight">VCS</span>
+                        <span class="text-xs text-gray-600 font-medium leading-tight">Vidya Chaitanya Samakya</span>
+                    </div>
                 </div>
                 <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,191 +106,88 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 bg-white overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, #1E40AF 1px, transparent 0); background-size: 40px 40px;"></div>
-        </div>
-        
-        <!-- Gradient Overlays -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-800/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
+    <section class="pt-32 pb-20 bg-gradient-to-b from-blue-800 via-blue-700 to-blue-600 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl"></div>
         
         <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-5xl mx-auto text-center">
-                <!-- Logo - Centered and Prominent -->
-                <div class="mb-8" data-aos="fade-down" data-aos-duration="800">
-                    <div class="inline-block bg-gradient-to-br from-blue-800/10 to-amber-500/10 rounded-3xl p-8 border-2 border-blue-800/20 shadow-xl">
-                        <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="w-48 h-48 md:w-64 md:h-64 mx-auto drop-shadow-2xl">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <!-- Left Content -->
+                    <div class="text-center md:text-left" data-aos="fade-right" data-aos-duration="800">
+                        <!-- Badge -->
+                        <div class="mb-6 flex justify-center md:justify-start" data-aos="fade-up" data-aos-delay="100">
+                            <span class="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold shadow-md border border-white/30">
+                                Registered Non-Profit • Since 2011
+                            </span>
+                        </div>
+                        
+                        <!-- Main Heading -->
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg" data-aos="fade-up" data-aos-delay="200" style="text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+                            Our Story
+                        </h1>
+                        
+                        <!-- Subtitle -->
+                        <p class="text-xl md:text-2xl text-gray-100 max-w-xl leading-relaxed mb-8" data-aos="fade-up" data-aos-delay="300" style="text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+                            From a vision to reality: <span class="text-amber-300 font-semibold">transforming education beyond classroom walls</span>
+                        </p>
+                        
+                    </div>
+                    
+                    <!-- Right Content - Visual Elements -->
+                    <div class="relative mt-8 md:mt-0" data-aos="fade-left" data-aos-duration="800">
+                        <!-- Main Card -->
+                        <div class="relative z-10 bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
+                            <div class="bg-gradient-to-br from-amber-400/20 to-blue-600/20 rounded-2xl p-8">
+                                <!-- Story Timeline Visual -->
+                                <div class="space-y-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-amber-500/30 rounded-xl flex items-center justify-center">
+                                            <span class="text-2xl">🚀</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-bold text-lg mb-1">2011</div>
+                                            <div class="text-gray-200 text-sm">Foundation Established</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/30 rounded-xl flex items-center justify-center">
+                                            <span class="text-2xl">📚</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-bold text-lg mb-1">13+ Years</div>
+                                            <div class="text-gray-200 text-sm">Continuous Service</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-emerald-500/30 rounded-xl flex items-center justify-center">
+                                            <span class="text-2xl">🌟</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-bold text-lg mb-1">Today</div>
+                                            <div class="text-gray-200 text-sm">Expanding Impact</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Badge -->
-                <div class="mb-6" data-aos="fade-up" data-aos-delay="100">
-                    <span class="inline-block px-6 py-2 bg-gradient-to-r from-blue-800 to-blue-600 text-white rounded-full text-sm font-semibold shadow-md">
-                        Registered Non-Profit • Regd No: 87/2011
-                    </span>
-                </div>
-                
-                <!-- Main Heading -->
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
-                    The People Behind<br class="hidden md:block"> the Vision
-                </h1>
-                
-                <!-- Subtitle -->
-                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8" data-aos="fade-up" data-aos-delay="300">
-                    Born from a simple yet powerful belief: <span class="text-blue-800 font-semibold">education is not confined to school walls</span>
-                </p>
                 
                 <!-- Description Text -->
-                <div class="max-w-3xl mx-auto space-y-4" data-aos="fade-up" data-aos-delay="400">
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        Established in 2011, Vidya Chaitanya Samakya began as a small initiative in <span class="font-semibold text-gray-900">Palakol, Andhra Pradesh</span>, driven by educators and community leaders who saw untapped potential in young minds.
+                <div class="max-w-4xl mx-auto mt-12 text-center" data-aos="fade-up" data-aos-delay="500">
+                    <p class="text-lg text-gray-100 leading-relaxed mb-4" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
+                        Established in <span class="font-semibold text-white">Palakol, Andhra Pradesh</span>, Vidya Chaitanya Samakya began as a vision to bridge educational gaps. Driven by educators and community leaders who saw untapped potential, we've grown into a trusted organization touching thousands of lives.
                     </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        What started as a vision to bridge educational gaps has grown into a trusted organization, touching the lives of thousands of students across the region and creating pathways to success that extend far beyond traditional learning.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why We Do This Section -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-                        Why We Do This
-                    </h2>
-                    <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto"></div>
-                </div>
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6" data-aos="fade-right">
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-blue-800/10 rounded-xl flex items-center justify-center">
-                                <span class="text-2xl">🎓</span>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-serif font-bold text-gray-900 mb-2">The Challenge</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    In Palakol, like many regions across India, countless bright young minds face barriers that limit their potential. Many students possess exceptional talent but lack access to specialized coaching, competitive platforms, or financial resources needed to pursue their dreams.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center">
-                                <span class="text-2xl">💡</span>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-serif font-bold text-gray-900 mb-2">The Realization</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Our founders—educators and community leaders who had witnessed these challenges firsthand—realized that traditional schooling alone wasn't enough. They saw students who could excel but needed extra support, mentorship, and opportunities beyond the standard curriculum.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative" data-aos="fade-left">
-                        <div class="bg-gradient-to-br from-blue-800/10 via-amber-500/10 to-blue-800/10 rounded-3xl p-10 border border-blue-800/20">
-                            <div class="text-center">
-                                <div class="text-6xl mb-6">🌟</div>
-                                <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Our Vision</h3>
-                                <p class="text-lg text-gray-700 leading-relaxed">
-                                    This vision sparked Vidya Chaitanya Samakya in 2011. We believe that every child deserves a chance to discover their potential, regardless of their financial circumstances. Our programs bridge gaps, identify hidden talents, and provide the support system that transforms aspirations into achievements.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team CTA Section -->
-    <section class="py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-                <div class="bg-gradient-to-br from-blue-50 via-white to-amber-50 rounded-3xl p-12 shadow-lg border border-blue-200">
-                    <div class="w-24 h-24 bg-gradient-to-br from-blue-800 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <span class="text-5xl text-white">👥</span>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-                        Meet Our Team
-                    </h2>
-                    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Our dedicated team of leaders, executives, and members work tirelessly to bring our vision to life. Get to know the people behind Vidya Chaitanya Samakya.
-                    </p>
-                    <a href="team.html" class="inline-block px-8 py-4 bg-gradient-to-r from-blue-800 to-blue-600 text-white rounded-full font-semibold hover:from-blue-900 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg">
-                        View Our Team
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section class="py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-                    Our Core Philosophy
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    The principles that guide everything we do
-                </p>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto mt-4"></div>
-            </div>
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-16 h-16 bg-blue-800/10 rounded-2xl flex items-center justify-center mb-6">
-                            <span class="text-4xl">🎯</span>
-                        </div>
-                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Mission</h3>
-                        <p class="text-gray-700 mb-4 leading-relaxed">
-                            To empower students through innovative educational programs that go beyond traditional classroom learning.
-                        </p>
-                        <div class="pt-4 border-t border-gray-200">
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                We achieve this by identifying talent through competitive exams, providing specialized coaching, organizing enriching summer camps, and offering financial support to deserving students pursuing higher aspirations.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6">
-                            <span class="text-4xl">💡</span>
-                        </div>
-                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Vision</h3>
-                        <p class="text-gray-700 mb-4 leading-relaxed">
-                            To create a society where every child has access to quality education and opportunities to excel.
-                        </p>
-                        <div class="pt-4 border-t border-gray-200">
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                We envision a future where financial constraints never limit a student's potential, where academic excellence is nurtured alongside character development, and where every learner can discover and pursue their true calling.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
-                        <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6">
-                            <span class="text-4xl">❤️</span>
-                        </div>
-                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Values</h3>
-                        <p class="text-gray-700 mb-4 leading-relaxed">
-                            Integrity, empathy, and dedication to nurturing young minds with compassion and excellence.
-                        </p>
-                        <div class="pt-4 border-t border-gray-200">
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Integrity guides our actions—ensuring transparency in programs and honest communication. Empathy drives us to understand each student's unique challenges. Our dedication manifests in personalized mentorship and unwavering commitment to holistic development.
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Journey Timeline -->
-    <section class="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section class="py-24 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
@@ -341,22 +242,8 @@
                         </p>
                     </div>
 
-                    <!-- Timeline Item 4 -->
-                    <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-purple-500" data-aos="fade-up" data-aos-delay="400">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="text-purple-600 font-bold text-xl">Ongoing</div>
-                            <div class="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center">
-                                <span class="text-xl">🌟</span>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Expanding Initiatives</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Continuously expanding our programs including summer camps, financial assistance, and community felicitations to serve more students and families.
-                        </p>
-                    </div>
-
-                    <!-- Timeline Item 5 - Latest Initiative -->
-                    <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-amber-500 relative" data-aos="fade-up" data-aos-delay="500">
+                    <!-- Timeline Item 4 - Latest Initiative -->
+                    <div class="bg-gradient-to-br from-blue-50 to-amber-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-amber-500 relative" data-aos="fade-up" data-aos-delay="400">
                         <div class="absolute top-4 right-4">
                             <span class="px-3 py-1 bg-amber-500 text-white rounded-full text-xs font-bold">NEW</span>
                         </div>
@@ -373,6 +260,176 @@
                         <p class="text-sm text-gray-500 italic">
                             Palakol, West Godavari District, Andhra Pradesh
                         </p>
+                    </div>
+
+                    <!-- Timeline Item 5 - Expanding Initiatives (Spans both columns) -->
+                    <div class="md:col-span-2 bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border-l-4 border-purple-500" data-aos="fade-up" data-aos-delay="500">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="text-purple-600 font-bold text-xl">Ongoing</div>
+                            <div class="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center">
+                                <span class="text-xl">🌟</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3">Expanding Initiatives</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Continuously expanding our programs including summer camps, financial assistance, and community felicitations to serve more students and families.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why We Do This Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                        Why We Do This
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-4">Understanding the motivation behind our mission</p>
+                    <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6" data-aos="fade-right">
+                        <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50/50 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all border border-blue-100">
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-800 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                                    <span class="text-2xl">🎓</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-serif font-bold text-gray-900 mb-2">The Challenge</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        In Palakol, like many regions across India, countless bright young minds face barriers that limit their potential. Many students possess exceptional talent but lack access to specialized coaching, competitive platforms, or financial resources needed to pursue their dreams.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-amber-50 via-white to-amber-50/50 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all border border-amber-100">
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+                                    <span class="text-2xl">💡</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-serif font-bold text-gray-900 mb-2">The Realization</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Our founders—educators and community leaders who had witnessed these challenges firsthand—realized that traditional schooling alone wasn't enough. They saw students who could excel but needed extra support, mentorship, and opportunities beyond the standard curriculum.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative" data-aos="fade-left">
+                        <div class="bg-gradient-to-br from-blue-800/10 via-amber-500/10 to-blue-800/10 rounded-3xl p-10 border-2 border-amber-500/30 shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-amber-500/5 rounded-full blur-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-center">
+                                    <div class="w-20 h-20 bg-gradient-to-br from-amber-500 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                                        <span class="text-5xl">🌟</span>
+                                    </div>
+                                    <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Our Vision</h3>
+                                    <p class="text-lg text-gray-700 leading-relaxed">
+                                        This vision sparked Vidya Chaitanya Samakya in 2011. We believe that every child deserves a chance to discover their potential, regardless of their financial circumstances. Our programs bridge gaps, identify hidden talents, and provide the support system that transforms aspirations into achievements.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                    Our Core Philosophy
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    The principles that guide everything we do
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-800 to-amber-500 mx-auto mt-4"></div>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 border-2 border-blue-200 relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-800/5 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-800 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                                <span class="text-4xl">🎯</span>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Mission</h3>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                To empower students through innovative educational programs that go beyond traditional classroom learning.
+                            </p>
+                            <div class="pt-4 border-t border-blue-200">
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    We achieve this by identifying talent through competitive exams, providing specialized coaching, organizing enriching summer camps, and offering financial support to deserving students pursuing higher aspirations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-amber-50 via-white to-amber-50/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 border-2 border-amber-200 relative overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                                <span class="text-4xl">💡</span>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Vision</h3>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                To create a society where every child has access to quality education and opportunities to excel.
+                            </p>
+                            <div class="pt-4 border-t border-amber-200">
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    We envision a future where financial constraints never limit a student's potential, where academic excellence is nurtured alongside character development, and where every learner can discover and pursue their true calling.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-emerald-50 via-white to-emerald-50/50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 border-2 border-emerald-200 relative overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                                <span class="text-4xl">❤️</span>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-900 mb-4">Values</h3>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                Integrity, empathy, and dedication to nurturing young minds with compassion and excellence.
+                            </p>
+                            <div class="pt-4 border-t border-emerald-200">
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Integrity guides our actions—ensuring transparency in programs and honest communication. Empathy drives us to understand each student's unique challenges. Our dedication manifests in personalized mentorship and unwavering commitment to holistic development.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team CTA Section -->
+    <section class="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <div class="bg-gradient-to-br from-blue-50 via-white to-amber-50 rounded-3xl p-12 shadow-lg border-2 border-blue-200 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl"></div>
+                    <div class="relative z-10">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-800 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                            <span class="text-5xl text-white">👥</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
+                            Meet Our Team
+                        </h2>
+                        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                            Our dedicated team of leaders, executives, and members work tirelessly to bring our vision to life. Get to know the people behind Vidya Chaitanya Samakya.
+                        </p>
+                        <a href="team.html" class="inline-block px-8 py-4 bg-gradient-to-r from-blue-800 to-blue-600 text-white rounded-full font-semibold hover:from-blue-900 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg">
+                            View Our Team
+                        </a>
                     </div>
                 </div>
             </div>
@@ -428,11 +485,13 @@
         // Set current year dynamically
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        // Initialize AOS
+        // Initialize AOS - Unified animation configuration
         AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
+            duration: 700,
+            easing: 'ease-out',
+            once: true,
+            offset: 50,
+            delay: 0
         });
 
         // Mobile menu toggle
@@ -482,25 +541,41 @@
             }
         });
 
-        // Scroll progress bar
+        // Optimized scroll handlers with requestAnimationFrame
+        let ticking = false;
         const scrollProgress = document.getElementById('scrollProgress');
-        window.addEventListener('scroll', () => {
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / windowHeight) * 100;
-            scrollProgress.style.width = scrolled + '%';
-        });
-
-        // Back to top button
         const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.remove('hidden');
-                backToTop.classList.add('flex');
-            } else {
-                backToTop.classList.add('hidden');
-                backToTop.classList.remove('flex');
+        
+        function updateScrollElements() {
+            const scrollY = window.scrollY;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            // Update scroll progress bar (GPU-accelerated)
+            if (scrollProgress) {
+                const scrolled = scrollY / windowHeight;
+                scrollProgress.style.transform = `scaleX(${scrolled}) translateZ(0)`;
             }
-        });
+            
+            // Update back to top button
+            if (backToTop) {
+                if (scrollY > 300) {
+                    backToTop.classList.remove('hidden');
+                    backToTop.classList.add('flex');
+                } else {
+                    backToTop.classList.add('hidden');
+                    backToTop.classList.remove('flex');
+                }
+            }
+            
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateScrollElements);
+                ticking = true;
+            }
+        }, { passive: true });
 
         backToTop.addEventListener('click', () => {
             window.scrollTo({
