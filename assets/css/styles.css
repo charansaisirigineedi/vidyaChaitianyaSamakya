@@ -199,33 +199,6 @@ h1, h2, h3, h4, h5, h6 {
     backface-visibility: hidden;
 }
 
-.menu-close-icon.rotated {
-    transform: rotate(90deg) translateZ(0);
-}
-
-/* Timeline Styles (for About page) */
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, #1E40AF, #F59E0B);
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -6px;
-    top: 8px;
-    width: 14px;
-    height: 14px;
-    background: #F59E0B;
-    border: 3px solid #1E40AF;
-    border-radius: 50%;
-    z-index: 10;
-}
-
 /* Initiative Card Styles (for Initiatives page) - GPU Optimized */
 .initiative-card {
     will-change: transform;
