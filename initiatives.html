@@ -7,8 +7,8 @@
     <meta name="description" content="Explore our educational initiatives including talent tests, NMMS coaching, summer camps, and more.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="vcs-logo.svg">
-    <link rel="alternate icon" href="vcs-logo.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
+    <link rel="alternate icon" href="assets/images/vcs-logo.svg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,128 +22,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- Custom Styles -->
-    <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.025em;
-        }
-        
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(to right, #1E40AF, #F59E0B);
-            z-index: 9999;
-            transition: width 0.2s ease;
-        }
-        
-        .initiative-card {
-            transition: all 0.3s ease;
-        }
-        
-        .initiative-card:hover .card-title {
-            text-decoration: underline;
-            text-decoration-color: #F59E0B;
-            text-underline-offset: 8px;
-        }
-        
-        .logo-navbar {
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-        
-        .logo-footer {
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% {
-                box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
-            }
-        }
-        
-        .featured-initiative {
-            animation: pulse-glow 3s ease-in-out infinite;
-        }
-        
-        /* Mobile Menu Styles */
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            z-index: 40;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 400px;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
-            backdrop-filter: blur(20px);
-            z-index: 50;
-            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
-            overflow-y: auto;
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu-close {
-            transition: transform 0.2s ease;
-        }
-        
-        .mobile-menu-close:hover {
-            transform: rotate(90deg);
-        }
-        
-        .mobile-menu-link {
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        
-        .mobile-menu-link::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 0;
-            background: linear-gradient(to bottom, #1E40AF, #F59E0B);
-            border-radius: 0 2px 2px 0;
-            transition: height 0.2s ease;
-        }
-        
-        .mobile-menu-link:hover::before,
-        .mobile-menu-link.active::before {
-            height: 60%;
-        }
-    </style>
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="bg-white">
     <!-- Scroll Progress Bar -->
@@ -154,7 +34,7 @@
         <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="flex items-center space-x-3 group">
-                    <img src="vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
+                    <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
                     <span class="text-xl md:text-2xl font-serif font-bold text-blue-800 hidden sm:block">Vidya Chaitanya Samakya</span>
                 </a>
                 <div class="hidden md:flex space-x-8">
@@ -183,7 +63,7 @@
             <!-- Header -->
             <div class="flex items-center justify-between p-6 border-b border-gray-200">
                 <div class="flex items-center space-x-3">
-                    <img src="vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-10 w-10">
+                    <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-10 w-10">
                     <span class="text-lg font-serif font-bold text-blue-800">VCS</span>
                 </div>
                 <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close menu">
@@ -391,7 +271,7 @@
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <img src="vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 logo-footer">
+                        <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="h-12 w-12 logo-footer">
                         <h3 class="text-xl font-serif font-bold text-amber-500">Vidya Chaitanya Samakya</h3>
                     </div>
                     <p class="text-gray-300 text-sm">
