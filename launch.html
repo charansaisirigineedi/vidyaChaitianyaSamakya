@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Vidya Chaitanya Samakya</title>
+    <meta name="description" content="Welcome to Vidya Chaitanya Samakya - Empowering Students Beyond the Classroom">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
+    <link rel="alternate icon" href="assets/images/vcs-logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+        /* Launch Page Specific Styles */
+        .launch-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px) translateX(20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+        
+        .countdown-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            z-index: 10;
+        }
+        
+        .countdown-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .countdown-progress {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            border-top-color: #F59E0B;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .launch-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .launch-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .launch-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+        
+        .scale-in {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(245, 158, 11, 0.7);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
+    <div class="launch-container" id="launchContainer">
+        <!-- Animated Background Particles -->
+        <div class="particle" style="width: 80px; height: 80px; background: rgba(245, 158, 11, 0.1); top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 60px; height: 60px; background: rgba(245, 158, 11, 0.15); top: 20%; right: 15%; animation-delay: 1s;"></div>
+        <div class="particle" style="width: 100px; height: 100px; background: rgba(59, 130, 246, 0.1); bottom: 15%; left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 70px; height: 70px; background: rgba(245, 158, 11, 0.12); bottom: 25%; right: 10%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="width: 90px; height: 90px; background: rgba(59, 130, 246, 0.08); top: 50%; left: 5%; animation-delay: 0.5s;"></div>
+        <div class="particle" style="width: 50px; height: 50px; background: rgba(245, 158, 11, 0.1); top: 60%; right: 5%; animation-delay: 2.5s;"></div>
+        
+        <!-- Main Content -->
+        <div class="text-center px-4 relative z-10 max-w-4xl mx-auto" id="mainContent">
+            <!-- Logo Section -->
+            <div class="mb-8 scale-in" data-aos="fade-down" data-aos-duration="800">
+                <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full p-6 border border-white/20 shadow-2xl pulse-glow">
+                    <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakya Logo" class="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl" style="filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));">
+                </div>
+            </div>
+            
+            <!-- Organization Name -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 drop-shadow-2xl scale-in" data-aos="fade-up" data-aos-delay="100" style="text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);">
+                Vidya Chaitanya Samakya
+            </h1>
+            
+            <!-- Tagline -->
+            <p class="text-xl md:text-2xl lg:text-3xl text-amber-300 mb-2 font-semibold drop-shadow-lg scale-in" data-aos="fade-up" data-aos-delay="200" style="text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+                Empowering Students Beyond the Classroom
+            </p>
+            
+            <!-- Subtitle -->
+            <p class="text-base md:text-lg text-gray-200 mb-12 max-w-2xl mx-auto leading-relaxed scale-in" data-aos="fade-up" data-aos-delay="300" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
+                Since 2011, nurturing young minds through learning, mentoring, and compassion
+            </p>
+            
+            <!-- Launch Button -->
+            <div class="mb-8 scale-in" data-aos="fade-up" data-aos-delay="400" id="buttonContainer">
+                <button id="launchButton" class="launch-button px-12 md:px-16 py-4 md:py-5 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-full font-bold text-lg md:text-xl shadow-2xl hover:from-amber-600 hover:to-amber-700 transition-all transform hover:scale-110 relative z-10 border-2 border-amber-400/50">
+                    <span id="buttonText">Launch VCS</span>
+                </button>
+            </div>
+            
+            <!-- Impact Stats Preview -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto scale-in" data-aos="fade-up" data-aos-delay="500" id="statsContainer">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <div class="text-3xl md:text-4xl mb-2">📘</div>
+                    <div class="text-2xl md:text-3xl font-serif font-bold text-white mb-1">13+</div>
+                    <div class="text-xs md:text-sm text-gray-200">Years of Service</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <div class="text-3xl md:text-4xl mb-2">🎓</div>
+                    <div class="text-2xl md:text-3xl font-serif font-bold text-white mb-1">1000+</div>
+                    <div class="text-xs md:text-sm text-gray-200">Students Empowered</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <div class="text-3xl md:text-4xl mb-2">🧠</div>
+                    <div class="text-2xl md:text-3xl font-serif font-bold text-white mb-1">10+</div>
+                    <div class="text-xs md:text-sm text-gray-200">NMMS Batches</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <div class="text-3xl md:text-4xl mb-2">🤝</div>
+                    <div class="text-2xl md:text-3xl font-serif font-bold text-white mb-1">∞</div>
+                    <div class="text-xs md:text-sm text-gray-200">Smiles Shared</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Countdown Overlay -->
+        <div id="countdownOverlay" class="fixed inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 flex items-center justify-center z-50 hidden">
+            <div class="text-center">
+                <div class="countdown-circle mb-8">
+                    <div class="countdown-ring"></div>
+                    <div class="countdown-progress"></div>
+                    <div class="countdown-number" id="countdownNumber">5</div>
+                </div>
+                <p class="text-2xl md:text-3xl font-serif font-bold text-white mb-2 drop-shadow-lg" style="text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);">
+                    Welcome to Our Journey
+                </p>
+                <p class="text-lg md:text-xl text-amber-300 drop-shadow-md" style="text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+                    We're excited to show you around...
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true,
+            offset: 50
+        });
+
+        let countdownInterval;
+        let countdownValue = 5;
+        let hasLaunched = false;
+
+        const launchButton = document.getElementById('launchButton');
+        const mainContent = document.getElementById('mainContent');
+        const countdownOverlay = document.getElementById('countdownOverlay');
+        const countdownNumber = document.getElementById('countdownNumber');
+
+        // Launch button click handler
+        launchButton.addEventListener('click', function() {
+            if (hasLaunched) return;
+            hasLaunched = true;
+            
+            // Hide all main content
+            mainContent.style.opacity = '0';
+            mainContent.style.transform = 'scale(0.95)';
+            mainContent.style.transition = 'all 0.3s ease-out';
+            mainContent.style.pointerEvents = 'none';
+            
+            // Show countdown overlay
+            setTimeout(() => {
+                countdownOverlay.classList.remove('hidden');
+                countdownOverlay.style.opacity = '0';
+                countdownOverlay.style.transition = 'opacity 0.3s ease-in';
+                setTimeout(() => {
+                    countdownOverlay.style.opacity = '1';
+                }, 10);
+                
+                startCountdown();
+            }, 300);
+        });
+
+        function startCountdown() {
+            countdownValue = 5;
+            countdownNumber.textContent = countdownValue;
+            
+            // Animate countdown number
+            countdownNumber.style.transform = 'scale(1.2)';
+            countdownNumber.style.transition = 'transform 0.2s ease-out';
+            
+            setTimeout(() => {
+                countdownNumber.style.transform = 'scale(1)';
+            }, 200);
+            
+            countdownInterval = setInterval(() => {
+                countdownValue--;
+                countdownNumber.textContent = countdownValue;
+                
+                // Animate countdown number
+                countdownNumber.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    countdownNumber.style.transform = 'scale(1)';
+                }, 200);
+                
+                if (countdownValue <= 0) {
+                    clearInterval(countdownInterval);
+                    redirectToHome();
+                }
+            }, 1000);
+        }
+
+        function redirectToHome() {
+            // Quick fade out and redirect immediately
+            countdownOverlay.style.opacity = '0';
+            countdownOverlay.style.transition = 'opacity 0.2s ease-out';
+            
+            // Redirect immediately after countdown reaches 0
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 200);
+        }
+
+        // Add keyboard support (Enter key to launch)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !hasLaunched) {
+                launchButton.click();
+            }
+        });
+
+        // Add touch support for mobile
+        launchButton.addEventListener('touchstart', function() {
+            if (!hasLaunched) {
+                launchButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
+
