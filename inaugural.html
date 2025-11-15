@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Inaugural Ceremony - ACT Science Centre | Vidya Chaitanya Samakya</title>
     <meta name="description" content="Inaugural Ceremony of ACT Science Centre">
     
@@ -52,10 +52,12 @@
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
             width: 100%;
             max-width: 1600px;
+            min-width: 1200px;
             height: 100%;
             max-height: 90vh;
             display: grid;
             grid-template-columns: 1.1fr 1.5fr 1.1fr;
+            grid-template-rows: 1fr;
             gap: 2.5rem;
             padding: 3rem;
             border-radius: 1.5rem;
@@ -236,60 +238,6 @@
         .program-label {
             font-weight: 700;
             color: #1e40af;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1400px) {
-            .banner-card {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-                max-height: 100vh;
-                overflow-y: auto;
-                gap: 1.5rem;
-                padding: 2rem;
-            }
-            
-            .main-title {
-                font-size: 2rem;
-            }
-            
-            .sub-title {
-                font-size: 1.5rem;
-            }
-            
-            .left-panel, .right-panel {
-                overflow: visible;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .banner-container {
-                padding: 1rem;
-            }
-            
-            .banner-card {
-                padding: 1.5rem;
-                max-height: 95vh;
-            }
-            
-            .main-title {
-                font-size: 1.75rem;
-            }
-            
-            .sub-title {
-                font-size: 1.25rem;
-            }
-            
-            .section-title {
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (orientation: portrait) and (max-height: 800px) {
-            .banner-card {
-                max-height: 98vh;
-                padding: 1.25rem;
-            }
         }
     </style>
 </head>
