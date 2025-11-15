@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inaugural Ceremony - ACT Science Centre | Vidya Chaitanya Samakya</title>
+    <meta name="description" content="Inaugural Ceremony of ACT Science Centre">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .banner-container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%);
+            padding: 1.5rem;
+        }
+        
+        .banner-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 4px solid rgba(245, 158, 11, 0.4);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 1600px;
+            height: 100%;
+            max-height: 90vh;
+            display: grid;
+            grid-template-columns: 1.1fr 1.5fr 1.1fr;
+            gap: 2.5rem;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .left-panel, .right-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+        
+        .middle-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0;
+        }
+        
+        .gold-text {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #f59e0b;
+            padding-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .guest-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            transition: background-color 0.2s ease;
+        }
+        
+        .guest-item:hover {
+            background-color: rgba(30, 64, 175, 0.03);
+            margin: 0 -0.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        
+        .guest-item:last-child {
+            border-bottom: none;
+        }
+        
+        .guest-name {
+            font-weight: 700;
+            color: #1e40af;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-bottom: 0.3rem;
+            word-wrap: break-word;
+        }
+        
+        .guest-title {
+            color: #4b5563;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+        
+        .date-time-box {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            color: white;
+            padding: 1.75rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-container {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.12) 0%, rgba(245, 158, 11, 0.12) 100%);
+            border-radius: 50%;
+            padding: 1.5rem;
+            border: 3px solid rgba(245, 158, 11, 0.4);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 24px rgba(30, 64, 175, 0.15);
+        }
+        
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: #1e40af;
+            margin-bottom: 0.75rem;
+            word-wrap: break-word;
+            letter-spacing: -0.02em;
+        }
+        
+        .sub-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+            letter-spacing: -0.01em;
+        }
+        
+        .association-badge {
+            background: rgba(30, 64, 175, 0.1);
+            border: 2px solid rgba(30, 64, 175, 0.3);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem 0;
+            font-weight: 600;
+            color: #1e40af;
+            font-size: 1rem;
+        }
+        
+        .chief-guest-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(251, 191, 36, 0.12) 100%);
+            border: 2px solid rgba(245, 158, 11, 0.5);
+            border-radius: 1.25rem;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.15);
+        }
+        
+        .guests-section {
+            flex: 1;
+            overflow: hidden;
+            padding-right: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0.5rem;
+        }
+        
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        
+        .program-section {
+            background: rgba(30, 64, 175, 0.06);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            word-wrap: break-word;
+            overflow: hidden;
+            border: 1px solid rgba(30, 64, 175, 0.1);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
+        }
+        
+        .program-item {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #374151;
+            line-height: 1.5;
+            word-wrap: break-word;
+            border-bottom: 1px solid rgba(30, 64, 175, 0.08);
+        }
+        
+        .program-item:last-child {
+            border-bottom: none;
+        }
+        
+        .program-label {
+            font-weight: 700;
+            color: #1e40af;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .banner-card {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+                max-height: 100vh;
+                overflow-y: auto;
+                gap: 1.5rem;
+                padding: 2rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .sub-title {
+                font-size: 1.5rem;
+            }
+            
+            .left-panel, .right-panel {
+                overflow: visible;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .banner-container {
+                padding: 1rem;
+            }
+            
+            .banner-card {
+                padding: 1.5rem;
+                max-height: 95vh;
+            }
+            
+            .main-title {
+                font-size: 1.75rem;
+            }
+            
+            .sub-title {
+                font-size: 1.25rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (orientation: portrait) and (max-height: 800px) {
+            .banner-card {
+                max-height: 98vh;
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <div class="banner-card">
+            <!-- Left Panel -->
+            <div class="left-panel">
+                <!-- Chief Guest -->
+                <div class="chief-guest-box">
+                    <div class="section-title" style="font-size: 1.4rem; border-bottom: 3px solid #f59e0b; margin-bottom: 1rem; padding-bottom: 0.75rem;">CHIEF GUEST</div>
+                    <div style="padding-top: 0.5rem;">
+                        <div class="guest-name" style="font-size: 1.35rem; color: #1e40af; margin-bottom: 0.5rem; line-height: 1.3;">
+                            Dr. Nimmala Rama Naidu
+                        </div>
+                        <div class="guest-title" style="font-size: 1.05rem; margin-bottom: 0.4rem; color: #1e40af; font-weight: 600;">
+                            M.A., M.Phil, Ph.D.
+                        </div>
+                        <div class="guest-title" style="font-size: 1rem; font-weight: 600; color: #374151; line-height: 1.5;">
+                            H'ble Minister for Water Resources Development
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Programme -->
+                <div class="program-section">
+                    <div class="section-title" style="font-size: 1.2rem; margin-bottom: 0.75rem;">PROGRAMME</div>
+                    <div class="program-item">
+                        <span class="program-label">Welcome:</span> Polisetti Sri Sri<br>
+                        <span style="font-size: 0.85rem; color: #6b7280; display: block; margin-top: 0.2rem;">Secretary, Vidya Chaitanya Samakhya</span>
+                    </div>
+                    <div class="program-item">
+                        <span class="program-label">Presidential:</span> Sri Allamraju Rama Sastri<br>
+                        <span style="font-size: 0.85rem; color: #6b7280; display: block; margin-top: 0.2rem;">Chairman, Allamraju Charitable Trust (ACT)</span>
+                    </div>
+                    <div class="program-item">
+                        <span class="program-label">Vote of Thanks:</span> Sri SSR Jagannadharao<br>
+                        <span style="font-size: 0.85rem; color: #6b7280; display: block; margin-top: 0.2rem;">Secretary, KRIYA, Kakinada</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Middle Panel -->
+            <div class="middle-panel">
+                <div class="logo-container">
+                    <img src="assets/images/vcs-logo.svg" alt="VCS Logo" style="width: 100px; height: 100px;">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="font-size: 1.15rem; color: #4b5563; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.02em;">
+                        Cordially invite you for the
+                    </p>
+                    <h1 class="main-title">
+                        <span class="gold-text">INAUGURAL CEREMONY</span>
+                    </h1>
+                    <h2 class="sub-title" style="font-size: 1.5rem; margin: 0.5rem 0; color: #6b7280; font-weight: 600;">of</h2>
+                    <h2 class="sub-title">ACT SCIENCE CENTRE</h2>
+                </div>
+                
+                <div style="margin-top: 1.25rem;">
+                    <p style="font-size: 1rem; color: #6b7280; margin-bottom: 0.75rem; font-weight: 600; letter-spacing: 0.01em;">
+                        in association with
+                    </p>
+                    <div class="association-badge" style="margin-bottom: 0.5rem; padding: 0.75rem 1.5rem; font-size: 1rem;">VIDYA CHAITANYA SAMAKHYA</div>
+                    <div class="association-badge" style="background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.4); color: #f59e0b; padding: 0.75rem 1.5rem; font-size: 1rem;">
+                        KRIYA SOCIETY, KAKINADA
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <p style="font-size: 1.15rem; font-weight: 700; color: #1e40af; font-style: italic; letter-spacing: 0.01em;">
+                        Awaiting your participation and cooperation...
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Right Panel -->
+            <div class="right-panel">
+                <!-- Guests of Honour -->
+                <div class="guests-section">
+                    <div class="section-title" style="font-size: 1.5rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem;">GUESTS OF HONOUR</div>
+                    <div class="guest-item">
+                        <div class="guest-name">Sri T. Rahul Kumar Reddy, IAS</div>
+                        <div class="guest-title">Joint Collector, West Godavari</div>
+                    </div>
+                    <div class="guest-item">
+                        <div class="guest-name">Sri B. Gopi Murthy, MLC</div>
+                        <div class="guest-title">East - West Godavari Teachers Constituency</div>
+                    </div>
+                    <div class="guest-item">
+                        <div class="guest-name">Dr. Ch.Satyanarayana Murthy</div>
+                        <div class="guest-title">Ex MLA, Educationist, Palakol</div>
+                    </div>
+                    <div class="guest-item">
+                        <div class="guest-name">Sri EVVSSSBL Narayana</div>
+                        <div class="guest-title">District Educational Officer, West Godavari</div>
+                    </div>
+                    <div class="guest-item">
+                        <div class="guest-name">Dr. KSPN Varma</div>
+                        <div class="guest-title">Honorary President, Jana Vijnana Vedika, West Godavari</div>
+                    </div>
+                    <div class="guest-item">
+                        <div class="guest-name">Sri Md. Shajahan</div>
+                        <div class="guest-title">President, APPUSMA, Palakol</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
