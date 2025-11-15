@@ -1,6 +1,6 @@
-# Vidya Chaitanya Samakya Website
+# Vidya Chaitanya Samakhya Website
 
-A modern, responsive static website for Vidya Chaitanya Samakya, a non-profit educational organization based in Palakol, Andhra Pradesh.
+A modern, responsive static website for Vidya Chaitanya Samakhya, a non-profit educational organization based in Palakol, Andhra Pradesh.
 
 ## Technologies
 
@@ -15,4 +15,4 @@ Open `index.html` in a web browser. All pages are static and work without a serv
 
 ## License
 
-© 2025 Vidya Chaitanya Samakya. All rights reserved.
+© 2025 Vidya Chaitanya Samakhya. All rights reserved.
