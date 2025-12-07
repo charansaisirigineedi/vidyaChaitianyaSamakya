@@ -1,9 +1,20 @@
 /**
- * Gallery Management System
- * Vidya Chaitanya Samakhya
- * 
- * @file Main gallery functionality with modular architecture
+ * @fileoverview Gallery Management System
+ * @description Main gallery functionality with modular architecture for the photo gallery page.
+ *              Handles image loading, lazy loading, lightbox functionality, and category organization.
+ * @author Vidya Chaitanya Samakhya
  * @version 1.0.0
+ * 
+ * @module Gallery
+ * @requires error-handler.js - Error handling utilities
+ * 
+ * Features:
+ * - Dynamic gallery generation from JSON data
+ * - Lazy loading with Intersection Observer
+ * - Lightbox modal with keyboard navigation
+ * - Category-based organization
+ * - Responsive grid layout
+ * - Error handling and loading states
  */
 
 'use strict';
@@ -76,15 +87,57 @@ function escapeHtml(text) {
  * Show error message to user
  * @param {HTMLElement} container - Container to show error in
  * @param {string} message - Error message
+ * @param {Error} [error] - Error object for logging
  */
-function showError(container, message) {
+function showError(container, message, error) {
+    // Log error if error handler is available
+    if (window.ErrorHandler && error) {
+        window.ErrorHandler.handleError({
+            message: message || 'Gallery error',
+            error,
+            type: 'Gallery Error',
+            context: { container: container?.id || 'unknown' },
+            showUser: false // We'll show our own UI
+        });
+    }
+
+    // User-friendly error message
+    const userMessage = getUserFriendlyGalleryMessage(message);
+
     container.innerHTML = `
     <div class="gallery-error">
       <div class="gallery-error__icon" aria-hidden="true">⚠️</div>
-      <p class="gallery-error__message">${escapeHtml(message)}</p>
-      <p class="gallery-error__detail">Please try refreshing the page.</p>
+      <p class="gallery-error__message">${escapeHtml(userMessage)}</p>
+      <p class="gallery-error__detail">Please try refreshing the page. If the problem persists, please contact us.</p>
+      <button class="gallery-error__retry" onclick="location.reload()" style="margin-top: 12px; padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">
+        Refresh Page
+      </button>
     </div>
   `;
+}
+
+/**
+ * Get user-friendly error message for gallery errors
+ * @param {string} technicalMessage - Technical error message
+ * @returns {string} User-friendly message
+ */
+function getUserFriendlyGalleryMessage(technicalMessage) {
+    const errorMessages = {
+        'Failed to fetch': 'Unable to load gallery images. Please check your internet connection.',
+        '404': 'Gallery data not found. Please try again later.',
+        'NetworkError': 'Network error. Please check your connection and try again.',
+        'JSON': 'Unable to parse gallery data. Please refresh the page.',
+        'No images': 'No images found in gallery.',
+        'Timeout': 'Request timed out. Please try again.'
+    };
+
+    for (const [key, message] of Object.entries(errorMessages)) {
+        if (technicalMessage.includes(key)) {
+            return message;
+        }
+    }
+
+    return 'Unable to load the gallery. Please refresh the page or try again later.';
 }
 
 /* ============================================
@@ -92,7 +145,10 @@ function showError(container, message) {
    ============================================ */
 
 /**
- * Handles image loading with lazy loading and progressive enhancement
+ * Image Loader Class
+ * @description Handles image loading with lazy loading and progressive enhancement.
+ *              Uses Intersection Observer API for efficient viewport-based loading.
+ * @class
  */
 class ImageLoader {
     constructor() {
@@ -155,7 +211,10 @@ class ImageLoader {
    ============================================ */
 
 /**
- * Manages lightbox modal functionality
+ * Lightbox Controller Class
+ * @description Manages lightbox modal functionality for viewing images in full screen.
+ *              Handles navigation, keyboard controls, and keyboard accessibility.
+ * @class
  */
 class LightboxController {
     constructor(getFilteredImages) {
@@ -222,6 +281,21 @@ class LightboxController {
         document.body.style.overflow = 'hidden';
         this.isOpen = true;
 
+        // Update ARIA attributes
+        if (this.elements.lightbox) {
+            this.elements.lightbox.setAttribute('aria-hidden', 'false');
+        }
+
+        // Announce to screen readers
+        const images = this.getFilteredImages();
+        if (images && images[this.currentIndex]) {
+            const image = images[this.currentIndex];
+            const announcement = `Image ${this.currentIndex + 1} of ${images.length}: ${image.description || image.alt || 'Gallery image'}`;
+            if (window.announceToScreenReader) {
+                window.announceToScreenReader(announcement, 'polite');
+            }
+        }
+
         // Set focus to close button for accessibility
         setTimeout(() => {
             this.elements.close?.focus();
@@ -235,6 +309,16 @@ class LightboxController {
         this.elements.lightbox?.classList.remove('active');
         document.body.style.overflow = '';
         this.isOpen = false;
+
+        // Update ARIA attributes
+        if (this.elements.lightbox) {
+            this.elements.lightbox.setAttribute('aria-hidden', 'true');
+        }
+
+        // Announce to screen readers
+        if (window.announceToScreenReader) {
+            window.announceToScreenReader('Lightbox closed', 'polite');
+        }
     }
 
     /**
@@ -249,11 +333,23 @@ class LightboxController {
 
         if (this.elements.image) {
             this.elements.image.src = image.path;
-            this.elements.image.alt = image.alt || image.description;
+            this.elements.image.alt = image.alt || image.description || 'Gallery image';
         }
 
         if (this.elements.description) {
-            this.elements.description.textContent = image.description;
+            this.elements.description.textContent = image.description || '';
+            
+            // Update ARIA label for lightbox
+            if (this.elements.lightbox) {
+                const imageCount = `${this.currentIndex + 1} of ${images.length}`;
+                this.elements.lightbox.setAttribute('aria-label', `Image ${imageCount}: ${image.description || image.alt || 'Gallery image'}`);
+            }
+        }
+
+        // Announce image change to screen readers
+        if (this.isOpen && window.announceToScreenReader) {
+            const announcement = `Image ${this.currentIndex + 1} of ${images.length}: ${image.description || image.alt || 'Gallery image'}`;
+            window.announceToScreenReader(announcement, 'polite');
         }
     }
 
@@ -281,7 +377,10 @@ class LightboxController {
    ============================================ */
 
 /**
- * Main gallery manager - coordinates all functionality
+ * Gallery Manager Class
+ * @description Main gallery manager that coordinates all gallery functionality.
+ *              Handles data loading, rendering, and initialization of sub-components.
+ * @class
  */
 class GalleryManager {
     constructor() {
@@ -303,8 +402,29 @@ class GalleryManager {
             await this.loadData();
             this.renderGallery();
         } catch (error) {
-            console.error('Gallery initialization failed:', error);
-            showError(this.elements.grid, 'Failed to load gallery');
+            const errorMessage = error.message || 'Failed to load gallery';
+            
+            // Use error handler if available
+            if (window.ErrorHandler) {
+                window.ErrorHandler.handleError({
+                    message: errorMessage,
+                    error,
+                    type: 'Gallery Initialization Error',
+                    context: { 
+                        module: 'gallery.js',
+                        action: 'init'
+                    },
+                    showUser: false // We'll show our own UI
+                });
+            } else {
+                console.error('Gallery initialization failed:', error);
+            }
+
+            // Show user-friendly error in gallery container
+            const container = this.elements.container;
+            if (container) {
+                showError(container, errorMessage, error);
+            }
         }
     }
 
@@ -316,17 +436,58 @@ class GalleryManager {
             const response = await fetch(CONFIG.dataUrl);
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const error = new Error(`HTTP error! status: ${response.status}`);
+                error.status = response.status;
+                
+                // Log error
+                if (window.ErrorHandler) {
+                    window.ErrorHandler.handleError({
+                        message: `Failed to load gallery data: ${response.status}`,
+                        error,
+                        type: 'Network Error',
+                        context: { 
+                            url: CONFIG.dataUrl,
+                            status: response.status
+                        },
+                        showUser: false
+                    });
+                }
+                
+                throw error;
             }
 
             const data = await response.json();
             this.allImages = data.images || [];
 
             if (this.allImages.length === 0) {
-                throw new Error('No images found in data');
+                const error = new Error('No images found in data');
+                
+                if (window.ErrorHandler) {
+                    window.ErrorHandler.handleError({
+                        message: 'Gallery data is empty',
+                        error,
+                        type: 'Data Error',
+                        context: { url: CONFIG.dataUrl },
+                        showUser: false
+                    });
+                }
+                
+                throw error;
+            }
+
+            // Log success
+            if (window.logInfo) {
+                window.logInfo(`Gallery loaded: ${this.allImages.length} images`, {
+                    categories: Object.keys(
+                        this.allImages.reduce((acc, img) => {
+                            acc[img.category || 'other'] = true;
+                            return acc;
+                        }, {})
+                    )
+                });
             }
         } catch (error) {
-            console.error('Data loading error:', error);
+            // Re-throw to be handled by init()
             throw error;
         }
     }
@@ -338,10 +499,21 @@ class GalleryManager {
      */
     renderGallery() {
         const container = document.getElementById('galleryContainer');
-        if (!container) return;
+        if (!container) {
+            const error = new Error('Gallery container not found');
+            if (window.ErrorHandler) {
+                window.ErrorHandler.handleError({
+                    message: 'Gallery container element missing',
+                    error,
+                    type: 'DOM Error',
+                    showUser: true
+                });
+            }
+            return;
+        }
 
         if (this.allImages.length === 0) {
-            container.innerHTML = '<div class="gallery-error"><div class="gallery-error__icon">⚠️</div><p class="gallery-error__message">No images found</p></div>';
+            showError(container, 'No images found', new Error('Empty image array'));
             return;
         }
 
@@ -386,8 +558,21 @@ class GalleryManager {
             
             // Create gallery items for this category
             images.forEach((imageData) => {
-                const item = this.createGalleryItem(imageData, imageData.originalIndex);
-                grid.appendChild(item);
+                try {
+                    const item = this.createGalleryItem(imageData, imageData.originalIndex);
+                    grid.appendChild(item);
+                } catch (error) {
+                    // Log error but continue rendering other items
+                    if (window.ErrorHandler) {
+                        window.ErrorHandler.handleError({
+                            message: `Failed to create gallery item: ${imageData.path}`,
+                            error,
+                            type: 'Gallery Item Error',
+                            context: { imagePath: imageData.path },
+                            showUser: false
+                        });
+                    }
+                }
             });
 
             container.appendChild(section);
@@ -416,18 +601,19 @@ class GalleryManager {
       <div class="gallery-item" 
            role="button"
            tabindex="0"
-           aria-label="View ${escapeHtml(image.description)}"
+           aria-label="View image: ${escapeHtml(image.description || image.alt || 'Gallery image')}"
+           aria-describedby="gallery-caption-${index}"
            style="opacity: 1 !important;">
-        <div class="image-skeleton"></div>
+        <div class="image-skeleton" aria-hidden="true"></div>
         <img 
           src="${escapeHtml(image.path)}" 
-          alt="${escapeHtml(image.alt || image.description)}"
+          alt="${escapeHtml(image.alt || image.description || 'Gallery image')}"
           loading="lazy"
           decoding="async"
           style="opacity: 0; transition: opacity 0.3s ease;"
         >
-        <div class="gallery-item-overlay"></div>
-        <div class="gallery-item-caption">${escapeHtml(image.description)}</div>
+        <div class="gallery-item-overlay" aria-hidden="true"></div>
+        <div class="gallery-item-caption" id="gallery-caption-${index}">${escapeHtml(image.description || '')}</div>
       </div>
     `;
 
@@ -444,6 +630,14 @@ class GalleryManager {
             if (skeleton) skeleton.style.display = 'none';
             img.style.opacity = '1';
             img.alt = 'Image failed to load';
+            
+            // Log image load error
+            if (window.logWarn) {
+                window.logWarn(`Image failed to load: ${image.path}`, {
+                    imagePath: image.path,
+                    imageIndex: index
+                });
+            }
         });
 
         // Fallback: if image is already loaded (cached), show it immediately
@@ -489,15 +683,46 @@ if (document.readyState === 'loading') {
 
 /**
  * Initialize gallery application
+ * @description Main entry point for gallery initialization. Creates and initializes
+ *              the GalleryManager instance. Makes gallery accessible globally for debugging.
+ * @returns {void}
  */
 function initGallery() {
     try {
         const gallery = new GalleryManager();
-        gallery.init();
+        
+        // Use error boundary for async initialization
+        if (window.ErrorHandler) {
+            window.ErrorHandler.errorBoundary(
+                () => gallery.init(),
+                'Gallery Initialization',
+                {
+                    showUser: true,
+                    onError: (error) => {
+                        // Additional error handling if needed
+                        const container = document.getElementById('galleryContainer');
+                        if (container) {
+                            showError(container, 'Failed to initialize gallery', error);
+                        }
+                    }
+                }
+            );
+        } else {
+            gallery.init();
+        }
 
         // Make gallery globally accessible for debugging
         window.galleryManager = gallery;
     } catch (error) {
-        console.error('Failed to initialize gallery:', error);
+        if (window.ErrorHandler) {
+            window.ErrorHandler.handleError({
+                message: 'Failed to create gallery manager',
+                error,
+                type: 'Gallery Creation Error',
+                showUser: true
+            });
+        } else {
+            console.error('Failed to initialize gallery:', error);
+        }
     }
 }

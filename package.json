@@ -1,0 +1,13 @@
+{
+  "name": "vidya-chaitanya-samakhya",
+  "version": "1.0.0",
+  "description": "Vidya Chaitanya Samakhya website",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

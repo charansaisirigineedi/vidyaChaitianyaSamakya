@@ -6,6 +6,9 @@
     <title>Our Team - Vidya Chaitanya Samakhya</title>
     <meta name="description" content="Meet the dedicated members of Vidya Chaitanya Samakhya who lead our mission to empower students through education.">
     
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
     <link rel="alternate icon" href="assets/images/vcs-logo.svg">
@@ -18,12 +21,24 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS Animation Library with SRI -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu" crossorigin="anonymous"></script>
     
     <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Accessibility Styles -->
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    
+    <!-- Error Handler - Must load first for error handling -->
+    <script src="assets/js/error-handler.js" defer></script>
+    
+    <!-- Accessibility Utilities -->
+    <script src="assets/js/accessibility.js" defer></script>
+    
+    <!-- Security Utilities -->
+    <script src="assets/js/security.js" defer></script>
 </head>
 <body class="bg-white">
     <!-- Scroll Progress Bar -->
@@ -381,8 +396,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li>📞 9849006368, 9441073902</li>
-                        <li>✉️ vidyachaitanyasmakya@gmail.com</li>
+                        <li>📞 <span data-phone="9849006368">9849006368</span>, <span data-phone="9441073902">9441073902</span></li>
+                        <li>✉️ <span data-email="ivqlnpunvgnalnfznxln@tznvy.pbz">Loading...</span></li>
                         <li>📍 Palakol, Andhra Pradesh</li>
                     </ul>
                 </div>
@@ -400,126 +415,11 @@
         </svg>
     </button>
 
-    <!-- JavaScript -->
-    <script>
-        // Set current year dynamically
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Initialize AOS - Unified animation configuration
-        AOS.init({
-            duration: 700,
-            easing: 'ease-out',
-            once: true,
-            offset: 50,
-            delay: 0
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const menuIcon = document.getElementById('menuIcon');
-        const closeIcon = document.getElementById('closeIcon');
-        
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            menuIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
-        }
-        
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-        }
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
-        });
-        
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-        
-        // Close menu when clicking menu links
-        document.querySelectorAll('.mobile-menu-link').forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(closeMobileMenu, 200);
-            });
-        });
-        
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-
-        // Optimized scroll handlers with requestAnimationFrame
-        let ticking = false;
-        const scrollProgress = document.getElementById('scrollProgress');
-        const backToTop = document.getElementById('backToTop');
-        
-        function updateScrollElements() {
-            const scrollY = window.scrollY;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            
-            // Update scroll progress bar (GPU-accelerated)
-            if (scrollProgress) {
-                const scrolled = scrollY / windowHeight;
-                scrollProgress.style.transform = `scaleX(${scrolled}) translateZ(0)`;
-            }
-            
-            // Update back to top button
-            if (backToTop) {
-                if (scrollY > 300) {
-                    backToTop.classList.remove('hidden');
-                    backToTop.classList.add('flex');
-                } else {
-                    backToTop.classList.add('hidden');
-                    backToTop.classList.remove('flex');
-                }
-            }
-            
-            ticking = false;
-        }
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateScrollElements);
-                ticking = true;
-            }
-        }, { passive: true });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <!-- Common JavaScript - Shared functionality -->
+    <script src="assets/js/common.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script src="assets/js/sw-register.js" defer></script>
 </body>
 </html>
 

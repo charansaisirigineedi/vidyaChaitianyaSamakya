@@ -1,9 +1,102 @@
-/* Global Styles for Vidya Chaitanya Samakhya */
+/**
+ * @fileoverview Global Styles for Vidya Chaitanya Samakhya
+ * @description Main stylesheet containing global styles, typography, navigation,
+ *              animations, and performance optimizations used across all pages.
+ * @author Vidya Chaitanya Samakhya
+ * @version 1.0.0
+ */
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
 
 /* Prevent horizontal overflow and optimize scrolling */
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+/* ============================================
+   ACCESSIBILITY - SCREEN READER ONLY
+   ============================================ */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* ============================================
+   ACCESSIBILITY - FOCUS INDICATORS
+   ============================================ */
+
+/* Enhanced focus indicators for keyboard navigation */
+.keyboard-navigation *:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Focus indicators for interactive elements */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Remove outline for mouse users (when not using keyboard) */
+body:not(.keyboard-navigation) *:focus {
+    outline: none;
+}
+
+/* Ensure focus is visible for keyboard users */
+.keyboard-navigation a:focus,
+.keyboard-navigation button:focus,
+.keyboard-navigation input:focus,
+.keyboard-navigation textarea:focus,
+.keyboard-navigation select:focus,
+.keyboard-navigation [tabindex]:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Focus within for containers */
+.keyboard-navigation .nav-link:focus,
+.keyboard-navigation .mobile-menu-link:focus {
+    background-color: rgba(59, 130, 246, 0.1);
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Focus for buttons */
+.keyboard-navigation button:focus,
+.keyboard-navigation .back-to-top:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 }
 
 body {
@@ -31,7 +124,11 @@ body {
     will-change: transform, opacity;
 }
 
-/* Typography */
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+/* Base font family - Inter for body text */
 * {
     font-family: 'Inter', sans-serif;
 }
@@ -51,6 +148,10 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.025em;
 }
 
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+
 /* Scroll Progress Bar - Optimized for GPU acceleration */
 .scroll-progress {
     position: fixed;
@@ -67,6 +168,10 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 0.1s ease-out;
 }
 
+/* ============================================
+   LOGO STYLES
+   ============================================ */
+
 /* Logo Styles - Performance Optimized */
 .logo-navbar {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
@@ -80,13 +185,23 @@ h1, h2, h3, h4, h5, h6 {
     backface-visibility: hidden;
 }
 
+/* ============================================
+   NAVIGATION TEXT STYLES
+   ============================================ */
+
 /* Navigation Text Styles */
 .nav-brand-text {
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    color: #1e3a8a; /* Improved contrast: blue-800 */
 }
 
 .nav-link {
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    color: #111827; /* Improved contrast: gray-900 */
+}
+
+.nav-link:hover {
+    color: #1e3a8a; /* Improved contrast: blue-800 */
 }
 
 .navbar-scrolled .nav-brand-text {
@@ -96,6 +211,10 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-scrolled .nav-link {
     text-shadow: none;
 }
+
+/* ============================================
+   NAVBAR RESPONSIVE STYLES
+   ============================================ */
 
 /* Navbar Mobile Containment */
 #navbar {
@@ -112,7 +231,11 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Mobile Menu Styles */
+/* ============================================
+   MOBILE MENU STYLES
+   ============================================ */
+
+/* Mobile Menu Overlay - Backdrop for mobile menu */
 .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -199,6 +322,10 @@ h1, h2, h3, h4, h5, h6 {
     backface-visibility: hidden;
 }
 
+/* ============================================
+   INITIATIVE CARD STYLES
+   ============================================ */
+
 /* Initiative Card Styles (for Initiatives page) - GPU Optimized */
 .initiative-card {
     will-change: transform;
@@ -217,14 +344,21 @@ h1, h2, h3, h4, h5, h6 {
     text-underline-offset: 8px;
 }
 
-/* Unified Animation Standards */
-/* Standard easing function for all animations */
+/* ============================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================ */
+
+/* Unified Animation Standards - CSS Variables for consistent timing */
 :root {
     --animation-ease: cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: 0.2s;
     --transition-medium: 0.3s;
     --transition-slow: 0.5s;
 }
+
+/* ============================================
+   ANIMATION STANDARDS
+   ============================================ */
 
 /* Standardize card hover effects across all pages - uniform translate */
 [class*="hover:-translate-y-2"],
@@ -277,6 +411,10 @@ h1, h2, h3, h4, h5, h6 {
                 background-color var(--transition-fast) ease;
 }
 
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
 /* Featured Initiative Animation - Optimized for Performance */
 @keyframes pulse-glow {
     0%, 100% {
@@ -296,5 +434,117 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateZ(0);
     /* Use contain to isolate the animation */
     contain: layout style paint;
+}
+
+/* ============================================
+   ERROR NOTIFICATION STYLES
+   ============================================ */
+
+.error-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 400px;
+    min-width: 300px;
+    background: #fff;
+    border-left: 4px solid #ef4444;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.error-notification--visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.error-notification--dismissing {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.error-notification__content {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 12px;
+}
+
+.error-notification__icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.error-notification__text {
+    flex: 1;
+    min-width: 0;
+}
+
+.error-notification__text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827; /* Improved contrast: gray-900 */
+    margin-bottom: 4px;
+}
+
+.error-notification__text p {
+    font-size: 13px;
+    color: #374151; /* Improved contrast: gray-700 */
+    margin: 0;
+    line-height: 1.5;
+}
+
+.error-notification__close {
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #9ca3af;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.error-notification__close:hover {
+    color: #6b7280;
+    background-color: #f3f4f6;
+}
+
+.error-notification__close:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .error-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        min-width: auto;
+    }
+
+    .error-notification--visible {
+        transform: translateY(0);
+    }
+
+    .error-notification {
+        transform: translateY(-100%);
+    }
+
+    .error-notification--dismissing {
+        transform: translateY(-100%);
+    }
 }
 

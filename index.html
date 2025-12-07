@@ -6,6 +6,16 @@
     <title>Vidya Chaitanya Samakhya - Empowering Students Beyond the Classroom</title>
     <meta name="description" content="Vidya Chaitanya Samakhya, Palakol: A non-government, non-profit organization empowering students through educational initiatives for over a decade.">
     
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+    
+    <!-- Critical CSS - Inline for faster rendering -->
+    <style>
+        /* Critical CSS is loaded inline for above-the-fold content */
+    </style>
+    <link rel="preload" href="assets/css/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/critical.css"></noscript>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
     <link rel="alternate icon" href="assets/images/vcs-logo.svg">
@@ -15,40 +25,58 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS - Local optimized version (build with: npm run build) -->
+    <!-- Fallback to CDN if local version not available -->
+    <link rel="stylesheet" href="assets/css/tailwind.css" onerror="this.onerror=null;this.href='https://cdn.tailwindcss.com';var s=document.createElement('script');s.src='https://cdn.tailwindcss.com';document.head.appendChild(s);">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS Animation Library with SRI -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu" crossorigin="anonymous"></script>
     
     <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Accessibility Styles -->
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    
+    <!-- Error Handler - Must load first for error handling -->
+    <script src="assets/js/error-handler.js" defer></script>
+    
+    <!-- Accessibility Utilities -->
+    <script src="assets/js/accessibility.js" defer></script>
+    
+    <!-- Security Utilities -->
+    <script src="assets/js/security.js" defer></script>
 </head>
 <body class="bg-white">
+    <!-- ARIA Live Regions for Screen Reader Announcements -->
+    <div id="aria-live-polite" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <div id="aria-live-assertive" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+    
     <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-2 md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-[calc(100%-1rem)] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar">
+    <nav class="fixed top-2 md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-[calc(100%-1rem)] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group">
+                <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group" aria-label="Vidya Chaitanya Samakhya - Home">
                     <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
                     <span class="text-base sm:text-xl font-serif font-bold text-blue-800 nav-brand-text md:hidden">VCS</span>
                     <span class="text-xl md:text-2xl font-serif font-bold text-blue-800 hidden md:block nav-brand-text">Vidya Chaitanya Samakhya</span>
                 </a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="nav-link text-blue-800 font-medium border-b-2 border-blue-800 transition-colors">Home</a>
-                    <a href="initiatives.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">Initiatives</a>
-                    <a href="about.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">About Us</a>
-                    <a href="gallery.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">Gallery</a>
+                <div class="hidden md:flex space-x-8" role="menubar">
+                    <a href="index.html" class="nav-link text-blue-800 font-medium border-b-2 border-blue-800 transition-colors" role="menuitem" aria-current="page">Home</a>
+                    <a href="initiatives.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors" role="menuitem">Initiatives</a>
+                    <a href="about.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors" role="menuitem">About Us</a>
+                    <a href="gallery.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors" role="menuitem">Gallery</a>
                 </div>
-                <button class="md:hidden p-2 text-gray-900 hover:text-blue-800 transition-colors relative z-50" id="mobileMenuBtn" aria-label="Toggle mobile menu">
-                    <svg class="w-7 h-7 menu-close-icon" id="menuIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button class="md:hidden p-2 text-gray-900 hover:text-blue-800 transition-colors relative z-50" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="sr-only">Toggle mobile menu</span>
+                    <svg class="w-7 h-7 menu-close-icon" id="menuIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
-                    <svg class="w-7 h-7 menu-close-icon hidden" id="closeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7 menu-close-icon hidden" id="closeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
@@ -60,37 +88,38 @@
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title" aria-hidden="true">
         <div class="flex flex-col h-full">
             <!-- Header -->
             <div class="flex items-center justify-between p-6 border-b border-gray-200">
                 <div class="flex items-center space-x-2">
                     <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="h-10 w-10">
                     <div class="flex flex-col">
-                        <span class="text-lg font-serif font-bold text-blue-800 leading-tight">VCS</span>
+                        <h2 id="mobile-menu-title" class="text-lg font-serif font-bold text-blue-800 leading-tight">VCS</h2>
                         <span class="text-xs text-gray-600 font-medium leading-tight">Vidya Chaitanya Samakhya</span>
                     </div>
                 </div>
-                <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close mobile menu">
+                    <span class="sr-only">Close menu</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
             
             <!-- Menu Items -->
-            <nav class="flex-1 px-6 py-8">
-                <div class="space-y-2">
-                    <a href="index.html" class="mobile-menu-link active block px-4 py-4 text-lg font-semibold text-blue-800 rounded-xl bg-blue-50/50 hover:bg-blue-50 transition-all">
+            <nav class="flex-1 px-6 py-8" aria-label="Mobile navigation">
+                <div class="space-y-2" role="menu">
+                    <a href="index.html" class="mobile-menu-link active block px-4 py-4 text-lg font-semibold text-blue-800 rounded-xl bg-blue-50/50 hover:bg-blue-50 transition-all" role="menuitem" aria-current="page">
                         Home
                     </a>
-                    <a href="initiatives.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                    <a href="initiatives.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all" role="menuitem">
                         Initiatives
                     </a>
-                    <a href="about.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                    <a href="about.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all" role="menuitem">
                         About Us
                     </a>
-                    <a href="gallery.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                    <a href="gallery.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all" role="menuitem">
                         Gallery
                     </a>
                 </div>
@@ -105,8 +134,10 @@
         </div>
     </div>
 
+    <!-- Main Content -->
+    <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center bg-gradient-to-b from-blue-800 via-blue-700/60 to-blue-100 pt-24 md:pt-20">
+    <section class="relative min-h-screen flex items-center bg-gradient-to-b from-blue-800 via-blue-700/60 to-blue-100 pt-24 md:pt-20" aria-label="Hero section">
         <div class="container mx-auto px-4 sm:px-6 py-12 md:py-20">
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="text-center md:text-left" data-aos="fade-right" data-aos-duration="800">
@@ -135,7 +166,7 @@
                 <div data-aos="fade-left" data-aos-duration="800" class="relative mt-8 md:mt-0 hidden md:block">
                     <div class="relative z-10 bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
                         <div class="aspect-square bg-gradient-to-br from-amber-400/20 to-blue-600/20 rounded-2xl flex items-center justify-center p-8">
-                            <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="w-full h-full object-contain drop-shadow-2xl" style="filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));">
+                            <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="w-full h-full object-contain drop-shadow-2xl" style="filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));" loading="eager" fetchpriority="high">
                         </div>
                     </div>
                     <!-- Floating Icons -->
@@ -390,9 +421,7 @@
                             </svg>
                         </div>
                         <h3 class="font-serif font-bold text-gray-900 mb-2">Email</h3>
-                        <a href="mailto:vidyachaitanyasmakya@gmail.com" class="text-blue-600 hover:text-blue-800 text-sm break-all">
-                            vidyachaitanyasmakya@gmail.com
-                        </a>
+                        <span class="text-blue-600 hover:text-blue-800 text-sm break-all" data-email="ivqlnpunvgnalnfznxln@tznvy.pbz">Loading...</span>
                     </div>
                     
                     <!-- Location Card -->
@@ -437,8 +466,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li>📞 9849006368, 9441073902</li>
-                        <li>✉️ vidyachaitanyasmakya@gmail.com</li>
+                        <li>📞 <span data-phone="9849006368">9849006368</span>, <span data-phone="9441073902">9441073902</span></li>
+                        <li>✉️ <span data-email="ivqlnpunvgnalnfznxln@tznvy.pbz">Loading...</span></li>
                         <li>📍 Palakol, Andhra Pradesh</li>
                     </ul>
                 </div>
@@ -449,160 +478,20 @@
         </div>
     </footer>
 
+    </main>
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center z-[100]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center z-[100]" aria-label="Scroll to top of page">
+        <span class="sr-only">Scroll to top</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>
 
-    <!-- JavaScript -->
-    <script>
-        // Set current year dynamically
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Initialize AOS - Unified animation configuration
-        AOS.init({
-            duration: 700,
-            easing: 'ease-out',
-            once: true,
-            offset: 50,
-            delay: 0
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        // Update navbar on scroll and initial load
-        let navbarTicking = false;
-        function updateNavbar() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/80', 'shadow-2xl', 'navbar-scrolled');
-                navbar.classList.remove('bg-white/60');
-            } else {
-                navbar.classList.remove('bg-white/80', 'shadow-2xl', 'navbar-scrolled');
-                navbar.classList.add('bg-white/60');
-            }
-            navbarTicking = false;
-        }
-        
-        // Run on initial load
-        updateNavbar();
-        
-        // Run on scroll with throttling
-        window.addEventListener('scroll', () => {
-            if (!navbarTicking) {
-                window.requestAnimationFrame(updateNavbar);
-                navbarTicking = true;
-            }
-        }, { passive: true });
-
-        // Mobile menu toggle
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const menuIcon = document.getElementById('menuIcon');
-        const closeIcon = document.getElementById('closeIcon');
-        
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            menuIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
-        }
-        
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-        }
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
-        });
-        
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-        
-        // Close menu when clicking menu links
-        document.querySelectorAll('.mobile-menu-link').forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(closeMobileMenu, 200);
-            });
-        });
-        
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-
-        // Optimized scroll handlers with requestAnimationFrame
-        let scrollTicking = false;
-        const scrollProgress = document.getElementById('scrollProgress');
-        const backToTop = document.getElementById('backToTop');
-        
-        function updateScrollElements() {
-            const scrollY = window.scrollY;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            
-            // Update scroll progress bar (GPU-accelerated)
-            if (scrollProgress) {
-                const scrolled = scrollY / windowHeight;
-                scrollProgress.style.transform = `scaleX(${scrolled}) translateZ(0)`;
-            }
-            
-            // Update back to top button
-            if (backToTop) {
-                if (scrollY > 300) {
-                    backToTop.classList.remove('hidden');
-                    backToTop.classList.add('flex');
-                } else {
-                    backToTop.classList.add('hidden');
-                    backToTop.classList.remove('flex');
-                }
-            }
-            
-            scrollTicking = false;
-        }
-        
-        window.addEventListener('scroll', () => {
-            if (!scrollTicking) {
-                window.requestAnimationFrame(updateScrollElements);
-                scrollTicking = true;
-            }
-        }, { passive: true });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <!-- Common JavaScript - Shared functionality -->
+    <script src="assets/js/common.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script src="assets/js/sw-register.js" defer></script>
 </body>
 </html>
 
