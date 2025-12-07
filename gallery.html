@@ -7,12 +7,10 @@
     <title>Photo Gallery - Vidya Chaitanya Samakhya</title>
     <meta name="description"
         content="Browse through our photo gallery showcasing our initiatives, events, and achievements over the years.">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    
+
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
@@ -29,8 +27,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- AOS Animation Library with SRI -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"
+        integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+        integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu"
+        crossorigin="anonymous"></script>
 
     <!-- Resource Hints for Performance -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -40,19 +41,19 @@
 
     <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
-    
+
     <!-- Accessibility Styles -->
     <link rel="stylesheet" href="assets/css/accessibility.css">
 
     <!-- Gallery Specific Styles -->
     <link rel="stylesheet" href="assets/css/gallery.css">
-    
+
     <!-- Error Handler - Must load first for error handling -->
     <script src="assets/js/error-handler.js" defer></script>
-    
+
     <!-- Accessibility Utilities -->
     <script src="assets/js/accessibility.js" defer></script>
-    
+
     <!-- Security Utilities -->
     <script src="assets/js/security.js" defer></script>
 
@@ -166,7 +167,8 @@
         <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
         <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6"
+                data-aos="fade-up">
                 Photo Gallery
             </h1>
             <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="50">
@@ -183,7 +185,8 @@
     </section>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxDescription" aria-hidden="true">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxDescription"
+        aria-hidden="true">
         <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
             <span class="sr-only">Close lightbox</span>
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -237,7 +240,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li>📞 <span data-phone="9849006368">9849006368</span>, <span data-phone="9441073902">9441073902</span></li>
+                        <li>📞 <span data-phone="9849006368">9849006368</span>, <span
+                                data-phone="9441073902">9441073902</span></li>
                         <li>✉️ <span data-email="ivqlnpunvgnalnfznxln@tznvy.pbz">Loading...</span></li>
                         <li>📍 Palakol, Andhra Pradesh</li>
                     </ul>
@@ -260,7 +264,7 @@
 
     <!-- Common JavaScript - Shared functionality -->
     <script src="assets/js/common.js" defer></script>
-    
+
     <!-- Service Worker Registration -->
     <script src="assets/js/sw-register.js" defer></script>
 
