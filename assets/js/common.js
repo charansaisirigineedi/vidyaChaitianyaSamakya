@@ -1,12 +1,29 @@
 /**
- * Common JavaScript for Vidya Chaitanya Samakhya
- * Shared functionality across all pages
+ * @fileoverview Common JavaScript for Vidya Chaitanya Samakhya
+ * @description Shared functionality across all pages including navigation, mobile menu,
+ *              scroll effects, and animations. This module provides core UI interactions
+ *              that are consistent across the entire website.
+ * @author Vidya Chaitanya Samakhya
+ * @version 1.0.0
+ * @since 2025
+ * @requires error-handler.js - Error handling utilities
  */
 
 (function() {
     'use strict';
 
-    // Configuration
+    /**
+     * Application configuration constants
+     * @type {Object}
+     * @property {Object} AOS - Animate On Scroll library configuration
+     * @property {number} AOS.duration - Animation duration in milliseconds
+     * @property {string} AOS.easing - CSS easing function
+     * @property {boolean} AOS.once - Whether to animate only once
+     * @property {number} AOS.offset - Trigger offset in pixels
+     * @property {number} AOS.delay - Initial delay in milliseconds
+     * @property {number} SCROLL_THRESHOLD - Scroll position threshold for navbar styling
+     * @property {number} BACK_TO_TOP_THRESHOLD - Scroll position to show back-to-top button
+     */
     const CONFIG = {
         AOS: {
             duration: 700,
@@ -20,7 +37,10 @@
     };
 
     /**
-     * Initialize when DOM is ready
+     * Main initialization function
+     * @description Initializes all common functionality when DOM is ready.
+     *              Handles both immediate execution and deferred DOMContentLoaded event.
+     * @returns {void}
      */
     function init() {
         if (document.readyState === 'loading') {
@@ -36,12 +56,26 @@
             initScrollHandlers();
             initSmoothScroll();
         } catch (error) {
-            console.error('Error initializing common functionality:', error);
+            // Use error handler if available, otherwise fallback to console
+            if (window.ErrorHandler) {
+                window.ErrorHandler.handleError({
+                    message: 'Failed to initialize common functionality',
+                    error,
+                    type: 'Initialization Error',
+                    context: { module: 'common.js' },
+                    showUser: false // Don't show user notification for initialization errors
+                });
+            } else {
+                console.error('Error initializing common functionality:', error);
+            }
         }
     }
 
     /**
-     * Set current year in footer
+     * Initialize current year display in footer
+     * @description Updates the copyright year element with the current year dynamically.
+     *              This ensures the year stays current without manual updates.
+     * @returns {void}
      */
     function initCurrentYear() {
         const yearElement = document.getElementById('currentYear');
@@ -52,6 +86,9 @@
 
     /**
      * Initialize AOS (Animate On Scroll) library
+     * @description Configures and initializes the AOS animation library for scroll-triggered
+     *              animations. Only initializes if the AOS library is loaded.
+     * @returns {void}
      */
     function initAOS() {
         if (typeof AOS !== 'undefined') {
@@ -61,6 +98,10 @@
 
     /**
      * Initialize navbar scroll effects
+     * @description Manages navbar styling changes based on scroll position.
+     *              Uses requestAnimationFrame for performance-optimized scroll handling.
+     *              Adds shadow and background opacity changes when user scrolls down.
+     * @returns {void}
      */
     function initNavbar() {
         const navbar = document.getElementById('navbar');
@@ -93,6 +134,10 @@
 
     /**
      * Initialize mobile menu functionality
+     * @description Handles mobile menu toggle, overlay, and keyboard navigation.
+     *              Manages menu state, body scroll lock, and icon toggling.
+     *              Supports closing via overlay click, close button, escape key, or link click.
+     * @returns {void}
      */
     function initMobileMenu() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -154,6 +199,10 @@
 
     /**
      * Initialize scroll progress bar and back to top button
+     * @description Manages scroll progress indicator and back-to-top button visibility.
+     *              Uses requestAnimationFrame for smooth, performant scroll tracking.
+     *              Progress bar shows scroll percentage, button appears after threshold.
+     * @returns {void}
      */
     function initScrollHandlers() {
         const scrollProgress = document.getElementById('scrollProgress');
@@ -164,27 +213,38 @@
         let ticking = false;
 
         function updateScrollElements() {
-            const scrollY = window.scrollY;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            try {
+                const scrollY = window.scrollY;
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
-            // Update scroll progress bar
-            if (scrollProgress) {
-                const scrolled = windowHeight > 0 ? scrollY / windowHeight : 0;
-                scrollProgress.style.transform = 'scaleX(' + scrolled + ') translateZ(0)';
-            }
-
-            // Update back to top button
-            if (backToTop) {
-                if (scrollY > CONFIG.BACK_TO_TOP_THRESHOLD) {
-                    backToTop.classList.remove('hidden');
-                    backToTop.classList.add('flex');
-                } else {
-                    backToTop.classList.add('hidden');
-                    backToTop.classList.remove('flex');
+                // Update scroll progress bar
+                if (scrollProgress) {
+                    const scrolled = windowHeight > 0 ? scrollY / windowHeight : 0;
+                    scrollProgress.style.transform = 'scaleX(' + scrolled + ') translateZ(0)';
                 }
-            }
 
-            ticking = false;
+                // Update back to top button
+                if (backToTop) {
+                    if (scrollY > CONFIG.BACK_TO_TOP_THRESHOLD) {
+                        backToTop.classList.remove('hidden');
+                        backToTop.classList.add('flex');
+                    } else {
+                        backToTop.classList.add('hidden');
+                        backToTop.classList.remove('flex');
+                    }
+                }
+            } catch (error) {
+                if (window.ErrorHandler) {
+                    window.ErrorHandler.handleError({
+                        message: 'Error updating scroll elements',
+                        error,
+                        type: 'Scroll Handler Error',
+                        showUser: false
+                    });
+                }
+            } finally {
+                ticking = false;
+            }
         }
 
         // Throttled scroll handler
@@ -198,16 +258,30 @@
         // Back to top button click handler
         if (backToTop) {
             backToTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                try {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } catch (error) {
+                    if (window.ErrorHandler) {
+                        window.ErrorHandler.handleError({
+                            message: 'Error scrolling to top',
+                            error,
+                            type: 'Scroll Error',
+                            showUser: false
+                        });
+                    }
+                }
             });
         }
     }
 
     /**
      * Initialize smooth scroll for anchor links
+     * @description Adds smooth scrolling behavior to all anchor links that target
+     *              elements on the same page. Prevents default jump behavior.
+     * @returns {void}
      */
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {

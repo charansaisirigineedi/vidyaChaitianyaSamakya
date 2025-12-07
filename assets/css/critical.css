@@ -1,4 +1,16 @@
-/* Critical CSS - Above the fold styles for faster initial render */
+/**
+ * @fileoverview Critical CSS - Above the Fold Styles
+ * @description Inline critical CSS for faster initial page render. Contains only
+ *              styles needed for above-the-fold content including navigation,
+ *              hero sections, and base typography.
+ * @author Vidya Chaitanya Samakhya
+ * @version 1.0.0
+ * @note This file should be inlined in the <head> for optimal performance
+ */
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
 
 /* Reset and base styles */
 html {
@@ -16,6 +28,10 @@ body {
     padding: 0;
 }
 
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+
 /* Scroll Progress Bar - Critical for above fold */
 .scroll-progress {
     position: fixed;
@@ -30,6 +46,10 @@ body {
     will-change: transform;
     backface-visibility: hidden;
 }
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
 
 /* Navigation - Critical for above fold */
 #navbar {
@@ -47,6 +67,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-sizing: border-box;
 }
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
 
 /* Mobile menu overlay - Critical */
 .mobile-menu-overlay {
@@ -88,12 +112,20 @@ body {
     transform: translateX(0);
 }
 
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
 /* Typography - Critical */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     letter-spacing: 0.025em;
     margin: 0;
 }
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
 
 /* Performance optimizations */
 * {
@@ -111,6 +143,10 @@ h1, h2, h3, h4, h5, h6 {
     backface-visibility: hidden;
 }
 
+/* ============================================
+   LOGO STYLES
+   ============================================ */
+
 /* Logo optimizations */
 .logo-navbar {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
@@ -118,6 +154,10 @@ h1, h2, h3, h4, h5, h6 {
     backface-visibility: hidden;
     transform: translateZ(0);
 }
+
+/* ============================================
+   BACK TO TOP BUTTON
+   ============================================ */
 
 /* Back to top button */
 #backToTop {
@@ -147,6 +187,10 @@ h1, h2, h3, h4, h5, h6 {
     background: #D97706;
     transform: scale(1.1);
 }
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
 
 /* Mobile responsive */
 @media (max-width: 768px) {
