@@ -6,6 +6,9 @@
     <title>Our Team - Vidya Chaitanya Samakhya</title>
     <meta name="description" content="Meet the dedicated members of Vidya Chaitanya Samakhya who lead our mission to empower students through education.">
     
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
     <link rel="alternate icon" href="assets/images/vcs-logo.svg">
@@ -18,12 +21,15 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS Animation Library with SRI -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu" crossorigin="anonymous"></script>
     
     <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Security Utilities -->
+    <script src="assets/js/security.js" defer></script>
 </head>
 <body class="bg-white">
     <!-- Scroll Progress Bar -->
@@ -381,8 +387,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-300 text-sm">
-                        <li>📞 9849006368, 9441073902</li>
-                        <li>✉️ vidyachaitanyasmakya@gmail.com</li>
+                        <li>📞 <span data-phone="9849006368">9849006368</span>, <span data-phone="9441073902">9441073902</span></li>
+                        <li>✉️ <span data-email="ivqlnpunvgnalnfznxln@tznvy.pbz">Loading...</span></li>
                         <li>📍 Palakol, Andhra Pradesh</li>
                     </ul>
                 </div>
