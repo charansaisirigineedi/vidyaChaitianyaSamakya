@@ -16,6 +16,89 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ============================================
+   ACCESSIBILITY - SCREEN READER ONLY
+   ============================================ */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* ============================================
+   ACCESSIBILITY - FOCUS INDICATORS
+   ============================================ */
+
+/* Enhanced focus indicators for keyboard navigation */
+.keyboard-navigation *:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Focus indicators for interactive elements */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Remove outline for mouse users (when not using keyboard) */
+body:not(.keyboard-navigation) *:focus {
+    outline: none;
+}
+
+/* Ensure focus is visible for keyboard users */
+.keyboard-navigation a:focus,
+.keyboard-navigation button:focus,
+.keyboard-navigation input:focus,
+.keyboard-navigation textarea:focus,
+.keyboard-navigation select:focus,
+.keyboard-navigation [tabindex]:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Focus within for containers */
+.keyboard-navigation .nav-link:focus,
+.keyboard-navigation .mobile-menu-link:focus {
+    background-color: rgba(59, 130, 246, 0.1);
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Focus for buttons */
+.keyboard-navigation button:focus,
+.keyboard-navigation .back-to-top:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
 body {
     overflow-x: hidden;
     width: 100%;
@@ -109,10 +192,16 @@ h1, h2, h3, h4, h5, h6 {
 /* Navigation Text Styles */
 .nav-brand-text {
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    color: #1e3a8a; /* Improved contrast: blue-800 */
 }
 
 .nav-link {
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    color: #111827; /* Improved contrast: gray-900 */
+}
+
+.nav-link:hover {
+    color: #1e3a8a; /* Improved contrast: blue-800 */
 }
 
 .navbar-scrolled .nav-brand-text {
@@ -400,13 +489,13 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     font-size: 14px;
     font-weight: 600;
-    color: #1f2937;
+    color: #111827; /* Improved contrast: gray-900 */
     margin-bottom: 4px;
 }
 
 .error-notification__text p {
     font-size: 13px;
-    color: #6b7280;
+    color: #374151; /* Improved contrast: gray-700 */
     margin: 0;
     line-height: 1.5;
 }

@@ -40,12 +40,18 @@
 
     <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Accessibility Styles -->
+    <link rel="stylesheet" href="assets/css/accessibility.css">
 
     <!-- Gallery Specific Styles -->
     <link rel="stylesheet" href="assets/css/gallery.css">
     
     <!-- Error Handler - Must load first for error handling -->
     <script src="assets/js/error-handler.js" defer></script>
+    
+    <!-- Accessibility Utilities -->
+    <script src="assets/js/accessibility.js" defer></script>
     
     <!-- Security Utilities -->
     <script src="assets/js/security.js" defer></script>
@@ -177,26 +183,29 @@
     </section>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxDescription" aria-hidden="true">
         <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span class="sr-only">Close lightbox</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
         <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span class="sr-only">Previous image</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
         </button>
         <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span class="sr-only">Next image</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
         </button>
         <div class="lightbox-content">
-            <img id="lightboxImage" src="" alt="">
+            <img id="lightboxImage" src="" alt="" role="img">
             <div class="lightbox-info">
-                <p id="lightboxDescription" class="text-white font-medium"></p>
+                <p id="lightboxDescription" class="text-white font-medium" role="status" aria-live="polite"></p>
             </div>
         </div>
     </div>

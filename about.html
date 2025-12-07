@@ -31,10 +31,16 @@
     <!-- Error Handler - Must load first for error handling -->
     <script src="assets/js/error-handler.js" defer></script>
     
+    <!-- Accessibility Utilities -->
+    <script src="assets/js/accessibility.js" defer></script>
+    
     <!-- Security Utilities -->
     <script src="assets/js/security.js" defer></script>
 </head>
 <body class="bg-white">
+    <!-- ARIA Live Regions for Screen Reader Announcements -->
+    <div id="aria-live-polite" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <div id="aria-live-assertive" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
     
@@ -114,8 +120,10 @@
         </div>
     </div>
 
+    <!-- Main Content -->
+    <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 bg-gradient-to-b from-blue-800 via-blue-700 to-blue-600 relative overflow-hidden">
+    <section class="pt-32 pb-20 bg-gradient-to-b from-blue-800 via-blue-700 to-blue-600 relative overflow-hidden" aria-label="Hero section">
         <!-- Decorative Elements -->
         <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
@@ -399,9 +407,11 @@
         </div>
     </footer>
 
+    </main>
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center z-[100]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center z-[100]" aria-label="Scroll to top of page">
+        <span class="sr-only">Scroll to top</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>

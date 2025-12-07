@@ -281,6 +281,21 @@ class LightboxController {
         document.body.style.overflow = 'hidden';
         this.isOpen = true;
 
+        // Update ARIA attributes
+        if (this.elements.lightbox) {
+            this.elements.lightbox.setAttribute('aria-hidden', 'false');
+        }
+
+        // Announce to screen readers
+        const images = this.getFilteredImages();
+        if (images && images[this.currentIndex]) {
+            const image = images[this.currentIndex];
+            const announcement = `Image ${this.currentIndex + 1} of ${images.length}: ${image.description || image.alt || 'Gallery image'}`;
+            if (window.announceToScreenReader) {
+                window.announceToScreenReader(announcement, 'polite');
+            }
+        }
+
         // Set focus to close button for accessibility
         setTimeout(() => {
             this.elements.close?.focus();
@@ -294,6 +309,16 @@ class LightboxController {
         this.elements.lightbox?.classList.remove('active');
         document.body.style.overflow = '';
         this.isOpen = false;
+
+        // Update ARIA attributes
+        if (this.elements.lightbox) {
+            this.elements.lightbox.setAttribute('aria-hidden', 'true');
+        }
+
+        // Announce to screen readers
+        if (window.announceToScreenReader) {
+            window.announceToScreenReader('Lightbox closed', 'polite');
+        }
     }
 
     /**
@@ -308,11 +333,23 @@ class LightboxController {
 
         if (this.elements.image) {
             this.elements.image.src = image.path;
-            this.elements.image.alt = image.alt || image.description;
+            this.elements.image.alt = image.alt || image.description || 'Gallery image';
         }
 
         if (this.elements.description) {
-            this.elements.description.textContent = image.description;
+            this.elements.description.textContent = image.description || '';
+            
+            // Update ARIA label for lightbox
+            if (this.elements.lightbox) {
+                const imageCount = `${this.currentIndex + 1} of ${images.length}`;
+                this.elements.lightbox.setAttribute('aria-label', `Image ${imageCount}: ${image.description || image.alt || 'Gallery image'}`);
+            }
+        }
+
+        // Announce image change to screen readers
+        if (this.isOpen && window.announceToScreenReader) {
+            const announcement = `Image ${this.currentIndex + 1} of ${images.length}: ${image.description || image.alt || 'Gallery image'}`;
+            window.announceToScreenReader(announcement, 'polite');
         }
     }
 
@@ -564,18 +601,19 @@ class GalleryManager {
       <div class="gallery-item" 
            role="button"
            tabindex="0"
-           aria-label="View ${escapeHtml(image.description)}"
+           aria-label="View image: ${escapeHtml(image.description || image.alt || 'Gallery image')}"
+           aria-describedby="gallery-caption-${index}"
            style="opacity: 1 !important;">
-        <div class="image-skeleton"></div>
+        <div class="image-skeleton" aria-hidden="true"></div>
         <img 
           src="${escapeHtml(image.path)}" 
-          alt="${escapeHtml(image.alt || image.description)}"
+          alt="${escapeHtml(image.alt || image.description || 'Gallery image')}"
           loading="lazy"
           decoding="async"
           style="opacity: 0; transition: opacity 0.3s ease;"
         >
-        <div class="gallery-item-overlay"></div>
-        <div class="gallery-item-caption">${escapeHtml(image.description)}</div>
+        <div class="gallery-item-overlay" aria-hidden="true"></div>
+        <div class="gallery-item-caption" id="gallery-caption-${index}">${escapeHtml(image.description || '')}</div>
       </div>
     `;
 

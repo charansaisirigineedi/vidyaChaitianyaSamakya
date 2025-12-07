@@ -36,36 +36,47 @@
     <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
     
+    <!-- Accessibility Styles -->
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    
     <!-- Error Handler - Must load first for error handling -->
     <script src="assets/js/error-handler.js" defer></script>
+    
+    <!-- Accessibility Utilities -->
+    <script src="assets/js/accessibility.js" defer></script>
     
     <!-- Security Utilities -->
     <script src="assets/js/security.js" defer></script>
 </head>
 <body class="bg-white">
+    <!-- ARIA Live Regions for Screen Reader Announcements -->
+    <div id="aria-live-polite" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <div id="aria-live-assertive" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+    
     <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
     
     <!-- Navigation -->
-    <nav class="fixed top-2 md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-[calc(100%-1rem)] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar">
+    <nav class="fixed top-2 md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-[calc(100%-1rem)] md:w-[95%] max-w-7xl z-50 transition-all duration-300 bg-white/60 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/30" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group">
+                <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group" aria-label="Vidya Chaitanya Samakhya - Home">
                     <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 transition-transform group-hover:scale-110 logo-navbar">
                     <span class="text-base sm:text-xl font-serif font-bold text-blue-800 nav-brand-text md:hidden">VCS</span>
                     <span class="text-xl md:text-2xl font-serif font-bold text-blue-800 hidden md:block nav-brand-text">Vidya Chaitanya Samakhya</span>
                 </a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="nav-link text-blue-800 font-medium border-b-2 border-blue-800 transition-colors">Home</a>
-                    <a href="initiatives.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">Initiatives</a>
-                    <a href="about.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">About Us</a>
-                    <a href="gallery.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors">Gallery</a>
+                <div class="hidden md:flex space-x-8" role="menubar">
+                    <a href="index.html" class="nav-link text-blue-800 font-medium border-b-2 border-blue-800 transition-colors" role="menuitem" aria-current="page">Home</a>
+                    <a href="initiatives.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors" role="menuitem">Initiatives</a>
+                    <a href="about.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors" role="menuitem">About Us</a>
+                    <a href="gallery.html" class="nav-link text-gray-900 hover:text-blue-800 font-medium transition-colors" role="menuitem">Gallery</a>
                 </div>
-                <button class="md:hidden p-2 text-gray-900 hover:text-blue-800 transition-colors relative z-50" id="mobileMenuBtn" aria-label="Toggle mobile menu">
-                    <svg class="w-7 h-7 menu-close-icon" id="menuIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button class="md:hidden p-2 text-gray-900 hover:text-blue-800 transition-colors relative z-50" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span class="sr-only">Toggle mobile menu</span>
+                    <svg class="w-7 h-7 menu-close-icon" id="menuIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
-                    <svg class="w-7 h-7 menu-close-icon hidden" id="closeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7 menu-close-icon hidden" id="closeIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
@@ -77,37 +88,38 @@
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title" aria-hidden="true">
         <div class="flex flex-col h-full">
             <!-- Header -->
             <div class="flex items-center justify-between p-6 border-b border-gray-200">
                 <div class="flex items-center space-x-2">
                     <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="h-10 w-10">
                     <div class="flex flex-col">
-                        <span class="text-lg font-serif font-bold text-blue-800 leading-tight">VCS</span>
+                        <h2 id="mobile-menu-title" class="text-lg font-serif font-bold text-blue-800 leading-tight">VCS</h2>
                         <span class="text-xs text-gray-600 font-medium leading-tight">Vidya Chaitanya Samakhya</span>
                     </div>
                 </div>
-                <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button class="mobile-menu-close p-2 text-gray-600 hover:text-gray-900" id="mobileMenuClose" aria-label="Close mobile menu">
+                    <span class="sr-only">Close menu</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
             
             <!-- Menu Items -->
-            <nav class="flex-1 px-6 py-8">
-                <div class="space-y-2">
-                    <a href="index.html" class="mobile-menu-link active block px-4 py-4 text-lg font-semibold text-blue-800 rounded-xl bg-blue-50/50 hover:bg-blue-50 transition-all">
+            <nav class="flex-1 px-6 py-8" aria-label="Mobile navigation">
+                <div class="space-y-2" role="menu">
+                    <a href="index.html" class="mobile-menu-link active block px-4 py-4 text-lg font-semibold text-blue-800 rounded-xl bg-blue-50/50 hover:bg-blue-50 transition-all" role="menuitem" aria-current="page">
                         Home
                     </a>
-                    <a href="initiatives.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                    <a href="initiatives.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all" role="menuitem">
                         Initiatives
                     </a>
-                    <a href="about.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                    <a href="about.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all" role="menuitem">
                         About Us
                     </a>
-                    <a href="gallery.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all">
+                    <a href="gallery.html" class="mobile-menu-link block px-4 py-4 text-lg font-semibold text-gray-700 rounded-xl hover:bg-gray-50 hover:text-blue-800 transition-all" role="menuitem">
                         Gallery
                     </a>
                 </div>
@@ -122,8 +134,10 @@
         </div>
     </div>
 
+    <!-- Main Content -->
+    <main id="main-content" role="main">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center bg-gradient-to-b from-blue-800 via-blue-700/60 to-blue-100 pt-24 md:pt-20">
+    <section class="relative min-h-screen flex items-center bg-gradient-to-b from-blue-800 via-blue-700/60 to-blue-100 pt-24 md:pt-20" aria-label="Hero section">
         <div class="container mx-auto px-4 sm:px-6 py-12 md:py-20">
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="text-center md:text-left" data-aos="fade-right" data-aos-duration="800">
@@ -464,9 +478,11 @@
         </div>
     </footer>
 
+    </main>
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center z-[100]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-amber-500 text-white rounded-full shadow-lg hover:bg-amber-600 transition-all transform hover:scale-110 hidden items-center justify-center z-[100]" aria-label="Scroll to top of page">
+        <span class="sr-only">Scroll to top</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>

@@ -155,6 +155,19 @@
             document.body.style.overflow = 'hidden';
             if (menuIcon) menuIcon.classList.add('hidden');
             if (closeIcon) closeIcon.classList.remove('hidden');
+            
+            // Update ARIA attributes
+            if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            }
+            if (mobileMenu) {
+                mobileMenu.setAttribute('aria-hidden', 'false');
+            }
+            
+            // Announce to screen readers
+            if (window.announceToScreenReader) {
+                window.announceToScreenReader('Mobile menu opened', 'polite');
+            }
         }
 
         function closeMobileMenu() {
@@ -163,6 +176,24 @@
             document.body.style.overflow = '';
             if (menuIcon) menuIcon.classList.remove('hidden');
             if (closeIcon) closeIcon.classList.add('hidden');
+            
+            // Update ARIA attributes
+            if (mobileMenuBtn) {
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+            if (mobileMenu) {
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            }
+            
+            // Return focus to menu button
+            if (mobileMenuBtn) {
+                mobileMenuBtn.focus();
+            }
+            
+            // Announce to screen readers
+            if (window.announceToScreenReader) {
+                window.announceToScreenReader('Mobile menu closed', 'polite');
+            }
         }
 
         // Event listeners
@@ -217,11 +248,14 @@
                 const scrollY = window.scrollY;
                 const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
-                // Update scroll progress bar
-                if (scrollProgress) {
-                    const scrolled = windowHeight > 0 ? scrollY / windowHeight : 0;
-                    scrollProgress.style.transform = 'scaleX(' + scrolled + ') translateZ(0)';
-                }
+            // Update scroll progress bar
+            if (scrollProgress) {
+                const scrolled = windowHeight > 0 ? scrollY / windowHeight : 0;
+                scrollProgress.style.transform = 'scaleX(' + scrolled + ') translateZ(0)';
+                // Update ARIA value
+                const percentage = Math.round(scrolled * 100);
+                scrollProgress.setAttribute('aria-valuenow', percentage);
+            }
 
                 // Update back to top button
                 if (backToTop) {
