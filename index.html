@@ -9,6 +9,13 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
     
+    <!-- Critical CSS - Inline for faster rendering -->
+    <style>
+        /* Critical CSS is loaded inline for above-the-fold content */
+    </style>
+    <link rel="preload" href="assets/css/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/critical.css"></noscript>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/images/vcs-logo.svg">
     <link rel="alternate icon" href="assets/images/vcs-logo.svg">
@@ -18,8 +25,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS - Local optimized version (build with: npm run build) -->
+    <!-- Fallback to CDN if local version not available -->
+    <link rel="stylesheet" href="assets/css/tailwind.css" onerror="this.onerror=null;this.href='https://cdn.tailwindcss.com';var s=document.createElement('script');s.src='https://cdn.tailwindcss.com';document.head.appendChild(s);">
     
     <!-- AOS Animation Library with SRI -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
@@ -141,7 +149,7 @@
                 <div data-aos="fade-left" data-aos-duration="800" class="relative mt-8 md:mt-0 hidden md:block">
                     <div class="relative z-10 bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
                         <div class="aspect-square bg-gradient-to-br from-amber-400/20 to-blue-600/20 rounded-2xl flex items-center justify-center p-8">
-                            <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="w-full h-full object-contain drop-shadow-2xl" style="filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));">
+                            <img src="assets/images/vcs-logo.svg" alt="Vidya Chaitanya Samakhya Logo" class="w-full h-full object-contain drop-shadow-2xl" style="filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));" loading="eager" fetchpriority="high">
                         </div>
                     </div>
                     <!-- Floating Icons -->
@@ -460,153 +468,11 @@
         </svg>
     </button>
 
-    <!-- JavaScript -->
-    <script>
-        // Set current year dynamically
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Initialize AOS - Unified animation configuration
-        AOS.init({
-            duration: 700,
-            easing: 'ease-out',
-            once: true,
-            offset: 50,
-            delay: 0
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        // Update navbar on scroll and initial load
-        let navbarTicking = false;
-        function updateNavbar() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/80', 'shadow-2xl', 'navbar-scrolled');
-                navbar.classList.remove('bg-white/60');
-            } else {
-                navbar.classList.remove('bg-white/80', 'shadow-2xl', 'navbar-scrolled');
-                navbar.classList.add('bg-white/60');
-            }
-            navbarTicking = false;
-        }
-        
-        // Run on initial load
-        updateNavbar();
-        
-        // Run on scroll with throttling
-        window.addEventListener('scroll', () => {
-            if (!navbarTicking) {
-                window.requestAnimationFrame(updateNavbar);
-                navbarTicking = true;
-            }
-        }, { passive: true });
-
-        // Mobile menu toggle
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const menuIcon = document.getElementById('menuIcon');
-        const closeIcon = document.getElementById('closeIcon');
-        
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            menuIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
-        }
-        
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-        }
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
-        });
-        
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-        
-        // Close menu when clicking menu links
-        document.querySelectorAll('.mobile-menu-link').forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(closeMobileMenu, 200);
-            });
-        });
-        
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-
-        // Optimized scroll handlers with requestAnimationFrame
-        let scrollTicking = false;
-        const scrollProgress = document.getElementById('scrollProgress');
-        const backToTop = document.getElementById('backToTop');
-        
-        function updateScrollElements() {
-            const scrollY = window.scrollY;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            
-            // Update scroll progress bar (GPU-accelerated)
-            if (scrollProgress) {
-                const scrolled = scrollY / windowHeight;
-                scrollProgress.style.transform = `scaleX(${scrolled}) translateZ(0)`;
-            }
-            
-            // Update back to top button
-            if (backToTop) {
-                if (scrollY > 300) {
-                    backToTop.classList.remove('hidden');
-                    backToTop.classList.add('flex');
-                } else {
-                    backToTop.classList.add('hidden');
-                    backToTop.classList.remove('flex');
-                }
-            }
-            
-            scrollTicking = false;
-        }
-        
-        window.addEventListener('scroll', () => {
-            if (!scrollTicking) {
-                window.requestAnimationFrame(updateScrollElements);
-                scrollTicking = true;
-            }
-        }, { passive: true });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <!-- Common JavaScript - Shared functionality -->
+    <script src="assets/js/common.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script src="assets/js/sw-register.js" defer></script>
 </body>
 </html>
 
