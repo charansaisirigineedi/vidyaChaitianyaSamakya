@@ -7,7 +7,8 @@
     <meta name="description" content="Vidya Chaitanya Samakhya, Palakol: A non-government, non-profit organization empowering students through educational initiatives for over a decade.">
     
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self';">
+    <!-- Note: frame-ancestors is set via HTTP headers in .htaccess (X-Frame-Options) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://fonts.googleapis.com; base-uri 'self'; form-action 'self';">
     
     <!-- Critical CSS - Inline for faster rendering -->
     <style>
@@ -25,9 +26,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS - Local optimized version (build with: npm run build) -->
-    <!-- Fallback to CDN if local version not available -->
-    <link rel="stylesheet" href="assets/css/tailwind.css" onerror="this.onerror=null;this.href='https://cdn.tailwindcss.com';var s=document.createElement('script');s.src='https://cdn.tailwindcss.com';document.head.appendChild(s);">
+    <!-- Tailwind CSS - Using CDN (local version can be built with: npm run build) -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- AOS Animation Library with SRI -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">

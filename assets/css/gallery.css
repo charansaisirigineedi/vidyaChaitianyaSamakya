@@ -352,6 +352,26 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
 }
 
+/* Lightbox Description - Ensure it's visible and properly sized */
+/* Override accessibility.css [aria-live] rule that hides elements */
+#lightboxDescription {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0;
+  padding: 0;
+  display: block !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  word-wrap: break-word;
+  line-height: 1.5;
+  visibility: visible !important;
+  opacity: 1 !important;
+  clip: auto !important;
+  border: none;
+  outline: none;
+}
+
 /* ============================================
    Error States
    ============================================ */
@@ -428,6 +448,11 @@
     bottom: 16px;
     padding: 10px 20px;
     font-size: 14px;
+  }
+
+  #lightboxDescription {
+    font-size: 14px;
+    line-height: 1.4;
   }
 }
 
