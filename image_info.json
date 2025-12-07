@@ -1,0 +1,370 @@
+{
+    "image_info": [
+        {
+            "name": "1.jpeg",
+            "description": "Inauguration of Vidya Chaitanya Samakhya Jul 16th 2011",
+            "category": "inauguration",
+            "path": "assets/images/photos/1.jpeg"
+        },
+        {
+            "name": "2.jpeg",
+            "description": "Plantaion Programme 2012",
+            "category": "plantation",
+            "path": "assets/images/photos/2.jpeg"
+        },
+        {
+            "name": "3.jpeg",
+            "description": "Model Teachers Felicitation 2012",
+            "category": "model_teachers_felicitation",
+            "path": "assets/images/photos/3.jpeg"
+        },
+        {
+            "name": "4.jpeg",
+            "description": "Model Teachers Felicitation 2012",
+            "category": "model_teachers_felicitation",
+            "path": "assets/images/photos/4.jpeg"
+        },
+        {
+            "name": "5.jpeg",
+            "description": "Free Classes on Spoken English and Drawing",
+            "category": "free_classes",
+            "path": "assets/images/photos/5.jpeg"
+        },
+        {
+            "name": "6.jpeg",
+            "description": "Free Classes on Spoken English and Drawing",
+            "category": "free_classes",
+            "path": "assets/images/photos/6.jpeg"
+        },
+        {
+            "name": "7.jpeg",
+            "description": "NMMS 2013 Selected Student 2013",
+            "category": "nmms",
+            "path": "assets/images/photos/7.jpeg"
+        },
+        {
+            "name": "8.jpeg",
+            "description": "Model Test for NMMS 2014",
+            "category": "nmms",
+            "path": "assets/images/photos/8.jpeg"
+        },
+        {
+            "name": "9.jpeg",
+            "description": "NMMS 2014 selected students with faculty",
+            "category": "nmms",
+            "path": "assets/images/photos/9.jpeg"
+        },
+        {
+            "name": "10.jpeg",
+            "description": "Ideal Persons' awards",
+            "category": "ideal_persons_awards",
+            "path": "assets/images/photos/10.jpeg"
+        },
+        {
+            "name": "11.jpeg",
+            "description": "NMMS 2016 Selected students",
+            "category": "nmms",
+            "path": "assets/images/photos/11.jpeg"
+        },
+        {
+            "name": "12.jpeg",
+            "description": "Members of VCS",
+            "category": "members",
+            "path": "assets/images/photos/12.jpeg"
+        },
+        {
+            "name": "13.jpeg",
+            "description": "VCS TALENT TEST INAUGURATION 2016",
+            "category": "talent_test",
+            "path": "assets/images/photos/13.jpeg"
+        },
+        {
+            "name": "14.jpeg",
+            "description": "VCS TALENT TEST INAUGURATION 2016",
+            "category": "talent_test",
+            "path": "assets/images/photos/14.jpeg"
+        },
+        {
+            "name": "15.jpeg",
+            "description": "Talent Test Prize distribution ceremony 2016",
+            "category": "talent_test",
+            "path": "assets/images/photos/15.jpeg"
+        },
+        {
+            "name": "16.jpeg",
+            "description": "News paper clipping of article 'Upaadhayula Adharsam vidyartulaku upakaram'",
+            "category": "news_clippings",
+            "path": "assets/images/photos/16.jpeg"
+        },
+        {
+            "name": "17.jpeg",
+            "description": "Talent Test 2018 inauguration",
+            "category": "talent_test",
+            "path": "assets/images/photos/17.jpeg"
+        },
+        {
+            "name": "18.jpeg",
+            "description": "NMMS 2018",
+            "category": "nmms",
+            "path": "assets/images/photos/18.jpeg"
+        },
+        {
+            "name": "19.jpeg",
+            "description": "NMMS 2018",
+            "category": "nmms",
+            "path": "assets/images/photos/19.jpeg"
+        },
+        {
+            "name": "20.jpeg",
+            "description": "Summer classes 2018",
+            "category": "summer_classes",
+            "path": "assets/images/photos/20.jpeg"
+        },
+        {
+            "name": "21.jpeg",
+            "description": "Summer classes 2018",
+            "category": "summer_classes",
+            "path": "assets/images/photos/21.jpeg"
+        },
+        {
+            "name": "22.jpeg",
+            "description": "Summer classes 2018",
+            "category": "summer_classes",
+            "path": "assets/images/photos/22.jpeg"
+        },
+        {
+            "name": "23.jpeg",
+            "description": "NMMS Coaching start 2018",
+            "category": "nmms",
+            "path": "assets/images/photos/23.jpeg"
+        },
+        {
+            "name": "24.jpeg",
+            "description": "Gurajada Jayanthi 21-09-2018",
+            "category": "gurajada_jayanthi",
+            "path": "assets/images/photos/24.jpeg"
+        },
+        {
+            "name": "25.jpeg",
+            "description": "Gurajada Jayanthi 21-09-2018",
+            "category": "gurajada_jayanthi",
+            "path": "assets/images/photos/25.jpeg"
+        },
+        {
+            "name": "26.jpeg",
+            "description": "VCS Talent Test 2018",
+            "category": "talent_test",
+            "path": "assets/images/photos/26.jpeg"
+        },
+        {
+            "name": "27.jpeg",
+            "description": "VCS Talent Test 2018",
+            "category": "talent_test",
+            "path": "assets/images/photos/27.jpeg"
+        },
+        {
+            "name": "28.jpeg",
+            "description": "VCS Talent Test 2018",
+            "category": "talent_test",
+            "path": "assets/images/photos/28.jpeg"
+        },
+        {
+            "name": "29.jpeg",
+            "description": "VCS Talent Test 2018",
+            "category": "talent_test",
+            "path": "assets/images/photos/29.jpeg"
+        },
+        {
+            "name": "30.jpeg",
+            "description": "VCS Talent Test 2018",
+            "category": "talent_test",
+            "path": "assets/images/photos/30.jpeg"
+        },
+        {
+            "name": "31.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/31.jpeg"
+        },
+        {
+            "name": "32.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/32.jpeg"
+        },
+        {
+            "name": "33.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/33.jpeg"
+        },
+        {
+            "name": "34.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/34.jpeg"
+        },
+        {
+            "name": "35.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/35.jpeg"
+        },
+        {
+            "name": "36.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/36.jpeg"
+        },
+        {
+            "name": "37.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/37.jpeg"
+        },
+        {
+            "name": "38.jpeg",
+            "description": "Covid 19 Services",
+            "category": "covid_19_services",
+            "path": "assets/images/photos/38.jpeg"
+        },
+        {
+            "name": "39.jpeg",
+            "description": "Talent Test 2022",
+            "category": "talent_test",
+            "path": "assets/images/photos/39.jpeg"
+        },
+        {
+            "name": "40.jpeg",
+            "description": "Talent Test 2022",
+            "category": "talent_test",
+            "path": "assets/images/photos/40.jpeg"
+        },
+        {
+            "name": "41.jpeg",
+            "description": "Talent Test 2022",
+            "category": "talent_test",
+            "path": "assets/images/photos/41.jpeg"
+        },
+        {
+            "name": "42.jpeg",
+            "description": "Talent Test 2022",
+            "category": "talent_test",
+            "path": "assets/images/photos/42.jpeg"
+        },
+        {
+            "name": "43.jpeg",
+            "description": "Education Assistance to student",
+            "category": "education_assistance",
+            "path": "assets/images/photos/43.jpeg"
+        },
+        {
+            "name": "44.jpeg",
+            "description": "News paper clipping of article 'Kaalaratna dr. shikhamaniki lalithaamaadhavarapu smarka saahithi purskaram'",
+            "category": "news_clippings",
+            "path": "assets/images/photos/44.jpeg"
+        },
+        {
+            "name": "45.jpeg",
+            "description": "Talent test 2024",
+            "category": "talent_test",
+            "path": "assets/images/photos/45.jpeg"
+        },
+        {
+            "name": "46.jpeg",
+            "description": "Talent test 2023",
+            "category": "talent_test",
+            "path": "assets/images/photos/46.jpeg"
+        },
+        {
+            "name": "47.jpeg",
+            "description": "Ideal Persons' awards",
+            "category": "ideal_persons_awards",
+            "path": "assets/images/photos/47.jpeg"
+        },
+        {
+            "name": "48.jpeg",
+            "description": "Ideal Persons' awards",
+            "category": "ideal_persons_awards",
+            "path": "assets/images/photos/48.jpeg"
+        },
+        {
+            "name": "49.jpeg",
+            "description": "Ideal Persons' awards",
+            "category": "ideal_persons_awards",
+            "path": "assets/images/photos/49.jpeg"
+        },
+        {
+            "name": "50.jpeg",
+            "description": "Peddapuram science center visit",
+            "category": "science_center_visit",
+            "path": "assets/images/photos/50.jpeg"
+        },
+        {
+            "name": "51.jpeg",
+            "description": "Peddapuram science center visit",
+            "category": "science_center_visit",
+            "path": "assets/images/photos/51.jpeg"
+        },
+        {
+            "name": "52.jpeg",
+            "description": "Education Assistance to student",
+            "category": "education_assistance",
+            "path": "assets/images/photos/52.jpeg"
+        },
+        {
+            "name": "53.jpeg",
+            "description": "Ideal Persons' awards",
+            "category": "ideal_persons_awards",
+            "path": "assets/images/photos/53.jpeg"
+        },
+        {
+            "name": "54.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/54.jpeg"
+        },
+        {
+            "name": "55.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/55.jpeg"
+        },
+        {
+            "name": "56.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/56.jpeg"
+        },
+        {
+            "name": "57.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/57.jpeg"
+        },
+        {
+            "name": "58.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/58.jpeg"
+        },
+        {
+            "name": "59.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/59.jpeg"
+        },
+        {
+            "name": "60.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/60.jpeg"
+        },
+        {
+            "name": "61.jpeg",
+            "description": "ACT Science Center",
+            "category": "act_science_center",
+            "path": "assets/images/photos/61.jpeg"
+        }
+    ]
+}
