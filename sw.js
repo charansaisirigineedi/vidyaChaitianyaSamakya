@@ -3,8 +3,8 @@
  * Provides offline capability and caching
  */
 
-const CACHE_NAME = 'vcs-v1';
-const RUNTIME_CACHE = 'vcs-runtime-v1';
+const CACHE_NAME = 'vcs-v2';
+const RUNTIME_CACHE = 'vcs-runtime-v2';
 
 // Assets to cache immediately
 const PRECACHE_ASSETS = [
@@ -14,6 +14,7 @@ const PRECACHE_ASSETS = [
     '/assets/css/styles.css',
     '/assets/css/tailwind.css',
     '/assets/js/common.js',
+    '/assets/js/anniversary-banner.js',
     '/assets/js/security.js',
     '/assets/images/vcs-logo.svg'
 ];
@@ -59,6 +60,22 @@ self.addEventListener('fetch', (event) => {
 
     // Skip cross-origin requests
     if (!event.request.url.startsWith(self.location.origin)) {
+        return;
+    }
+
+    // HTML pages: network-first so announcements show up immediately
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .then((response) => {
+                    if (response && response.status === 200 && response.type === 'basic') {
+                        const copy = response.clone();
+                        caches.open(RUNTIME_CACHE).then((cache) => cache.put(event.request, copy));
+                    }
+                    return response;
+                })
+                .catch(() => caches.match(event.request).then((r) => r || caches.match('/index.html')))
+        );
         return;
     }
 

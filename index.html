@@ -181,6 +181,42 @@
         </div>
     </section>
 
+    <!-- Anniversary & Thanksgiving Spotlight (revealed only on the event day by assets/js/anniversary-banner.js) -->
+    <section id="thanksgiving" class="hidden scroll-mt-24 py-12 md:py-20 bg-gradient-to-r from-blue-800 to-blue-900 relative overflow-hidden" aria-labelledby="thanksgiving-title">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-flex w-16 h-16 bg-amber-500/20 rounded-full items-center justify-center mb-4" aria-hidden="true">
+                    <span class="text-3xl">🎉</span>
+                </div>
+                <p class="text-amber-300 font-semibold tracking-widest text-sm uppercase mb-2">Today · A Year Together</p>
+                <h2 id="thanksgiving-title" class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">1 Year of ACT Science Centre</h2>
+                <p class="text-lg md:text-xl text-gray-200 leading-relaxed mb-8">
+                    One year ago, the doors of ACT Science Centre opened to the curious minds of our children.
+                    Today we pause to say <span class="text-amber-300 font-semibold">thank you</span> to the resource persons
+                    who gave their time and knowledge, and to the donors whose generosity made it all possible.
+                </p>
+
+                <div class="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-5 mb-8 text-left">
+                    <p class="text-amber-300 font-bold text-lg mb-3 text-center">Thanksgiving Celebration</p>
+                    <ul class="space-y-2 text-white">
+                        <li><span aria-hidden="true">📅</span> <strong>Today</strong></li>
+                        <li><span aria-hidden="true">🕓</span> <strong>4:00 PM</strong></li>
+                        <li><span aria-hidden="true">📍</span> <strong>ACT Science Centre</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Phase 2: list of resource persons and donors goes here -->
+                <div id="thanksgiving-honourees" class="hidden mb-8"></div>
+
+                <div>
+                    <a href="inaugural.html" class="inline-block bg-amber-500 hover:bg-amber-400 text-blue-900 font-bold px-6 py-3 rounded-full transition-colors">Relive our inauguration →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Impact Section -->
     <section class="py-12 md:py-20 bg-white">
         <div class="container mx-auto px-4 sm:px-6">
@@ -489,6 +525,7 @@
 
     <!-- Common JavaScript - Shared functionality -->
     <script src="assets/js/common.js" defer></script>
+    <script src="assets/js/anniversary-banner.js" defer></script>
     
     <!-- Service Worker Registration -->
     <script src="assets/js/sw-register.js" defer></script>
